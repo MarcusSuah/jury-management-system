@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get("/", [HomepageController::class, "homepage"]);
+Route::get("/ai-chatbot", [HomepageController::class, "chatbot"])->name('ai-chatbot');
+Route::post("/chat-message", [HomepageController::class, "chatMessage"])->name('chat-message');
 Route::get("/login", [AuthController::class, "login"]);
 Route::post("/login", [AuthController::class, "auth_login"]);
 

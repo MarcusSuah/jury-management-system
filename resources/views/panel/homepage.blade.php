@@ -118,7 +118,7 @@
                         <a href="#home" class="nav-item nav-link active">Home</a>
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#service" class="nav-item nav-link">Services</a>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                        <a href="{{ route('ai-chatbot') }}" class="nav-item nav-link">AI Chatbot</a>
                         @if(Auth::check())
                             <button type="button" class="btn text-white bg-dark pd-0 d-lg-block rounded-pill "><a
                                 href="{{ url('/panel/dashboard') }}" class="nav-item">My Account</a></button>
