@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\SummonMail;
 use App\Models\Summon;
+use App\Models\User;
 use PDF;
 use Gemini;
 use Illuminate\Http\Request;
@@ -78,7 +79,7 @@ class ReportController extends Controller
         $status = $request->input('status');
         $from_date = $request->input('from_date');
         $to_date = $request->input('to_date');
-//dd($from_date);die;
+
         $cases_list = DB::table('court_cases');
         if($case_type != 'any'){
             $cases_list->where('case_type', $case_type);
@@ -127,6 +128,81 @@ class ReportController extends Controller
                 
             }else{
                 return redirect()->back()->with('success', 'No case data found');
+            }
+        exit;
+    }
+
+    /*
+    * Method to display summon report filter
+    **/
+    public function summonReport(){
+        $jurors = User::getAllUsers();
+        $users = [];
+        if(!empty($jurors)){
+            foreach($jurors as $user){
+                if($user->hasRole('jury')){
+                    $users[] = [
+                        'email' => $user->email,
+                        'name' => $user->name.' | '.$user->email,
+                    ];
+                }
+            }
+        }
+        return view("panel.report.summon-report", compact('users'));
+    }
+
+     /*
+    * Method to generate summon report
+    **/
+    public function generateSummonReport(Request $request){
+        $user_email = $request->input('user');
+        $from_date = $request->input('from_date');
+        $to_date = $request->input('to_date');
+
+        $summon_list = DB::table('summons');
+        if($user_email != 'any'){
+            $summon_list->where('email', $user_email);
+        }
+        if($from_date != ''){
+            $date = strtotime($from_date);
+            $date = date('Y-m-d', $date);
+
+            $summon_list->where('created_at', '>=', $date);
+        }
+
+        if($to_date != ''){
+            $date = strtotime($to_date);
+            $date = date('Y-m-d', $date);
+
+            $summon_list->where('created_at', '<=', $date);
+        }
+        
+        $summon_list = $summon_list->get();
+            $summons = [];
+            $no = 1;
+            if (!empty($summon_list)) {
+                $summons_count = count($summon_list);
+               foreach($summon_list as $summon){
+                    $summons[] = [
+                        'sno'   => $no++,
+                        'name' => (!empty($summon->name))? $summon->name : '',
+                        'email' => (!empty($summon->email))? $summon->email : '',
+                        'category' => (!empty($summon->category))? $summon->category : '',
+                        'address' => (!empty($summon->address))? $summon->address : '',
+                        'message' => (!empty($summon->message))? base64_decode($summon->message) : '',
+                        'date' => (!empty($summon->date))? $summon->date : '',
+                    ]; 
+                }
+               // dd($summons);die;
+                if(!empty($summons)){
+                    $pdf= PDF::loadView('panel.report.summon-report-pdf',['data'=>$summons],compact('summons_count'));
+                    return $pdf->stream('summon-report.pdf');
+                }else{
+                    return redirect()->back()->with('success', 'No summon data found');
+                }
+                
+            }else{
+                return redirect()->back()->with('success', 'No summon data found');
             }
         exit;
     }

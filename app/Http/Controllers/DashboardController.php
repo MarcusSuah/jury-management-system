@@ -60,7 +60,9 @@ class DashboardController extends Controller
             ->join('jurors','jurors.id','assign_juries.juror_id')
             ->where('jurors.user_id', Auth::user()->id)->count();
 
-            return view("panel.dashboard", Compact('courts', 'court_cases','summons'));
+            $quiz = DB::table('assign_quizzes')->where('user_id', Auth::user()->id)->where('status', 'pending')->count();
+
+            return view("panel.dashboard", Compact('courts', 'court_cases','summons','quiz'));
         }
     }
 

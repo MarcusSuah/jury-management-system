@@ -81,6 +81,8 @@
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="{{ url('panel/questionnaire/add') }}"> Create Quiz</a></li>
                             <li><a href="{{ url('panel/questionnaire') }}">View Quiz</a></li>
+                            <li><a href="{{ url('panel/quiz-assigment') }}">Assign Quiz To Juror</a></li>
+                            <li><a href="{{ url('panel/view/quiz-assigment') }}">View Quiz Assigment</a></li>
                         </ul>
                     </li>
 
@@ -112,6 +114,29 @@
                     </li>
                 @endrole
 
+                @hasrole('jury')
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="fa-solid fa-users"></i>
+                            <span>My Cases</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ url('/view-cases/'.Auth::user()->id) }}">View Cases</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ri-folder-open-fill"></i>
+                            <span>My Quiz</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="{{ url('panel/view-pending-quiz') }}">Pending Quiz</a></li>
+                            <li><a href="{{ url('panel/quiz-records') }}">View Quiz Records</a></li>
+                        </ul>
+                    </li>
+                @endrole
+
                 @hasrole('judge')
                     <li>
                         <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -125,14 +150,10 @@
                 @endrole
 
                     <li>
-                        <a href="javascript: void(0);" class="has-arrow waves-effect">
-                            <i class="fa-solid fa-gears text-bg-dark"></i>
-                            <span>Authentication</span>
+                        <a href="{{ url('logout') }}">
+                            <i class="mdi mdi-logout text-bg-dark"></i>
+                            <span>Logout</span>
                         </a>
-                        <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{ url('logout') }}">Logout</a></li>
-                            <li><a href="{{ url('panel.lockscreen') }}">Lock Screen</a></li>
-                        </ul>
                     </li>
                 </ul>
             </div>

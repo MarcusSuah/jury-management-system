@@ -1373,3 +1373,18 @@ a.canvasjs-chart-credit {
   color: #fff;
   display: none !important;
 }
+span.notice {
+  height: 8px;
+  width: 8px;
+  background: #ff0000;
+  display: inline-block;
+  border-radius: 8px;
+  position: relative;
+  top: -9px;
+  left: -5px;
+}
+a.notice i.fa.fa-bell.text-white {
+  font-size: 23px;
+  top: 7px;
+  position: relative;
+}

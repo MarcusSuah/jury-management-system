@@ -25,7 +25,7 @@
     <link href="{{ url('') }}/assets/css/homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     @vite('resources/css/app.css')
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {
             background-color: #0A415D;
@@ -87,6 +87,52 @@
 
         .contact-link:hover {
             text-decoration: underline;
+        }
+        .ai-chat{
+            position: fixed;
+            display: inline;
+            right: 45px;
+            bottom: 45px;
+            z-index: 99;
+        }
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-box {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            max-width: 90%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chat-body {
+            padding: 10px;
+            overflow-y: auto;
+            height: 200px;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #ddd;
         }
     </style>
 </head>
@@ -182,7 +228,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid py-5">
+    <!-- <div class="container-fluid py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -222,7 +268,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- About End -->
 
 
@@ -369,55 +415,8 @@
     <!-- Feature End -->
 
 
-    <!-- Case Start -->
-    <div class="container-fluid bg-light py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3 fs-6">Case Study</div>
-                <h1 class="mb-4">Explore Our Recent AI Case Studies</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{{ url('') }}/assets/images/jury.jpeg" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Robotic Automation</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{{ url('') }}/assets/images/ai (5).png" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Machine learning</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="{{ url('') }}/assets/images/ai (2).png" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Predictive Analysis</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Case End -->
-
-
     <!-- FAQs Start -->
-    <div class="container-fluid py-2">
+    <div class="container-fluid py-2 bg-primary">
         <div class="container py-2">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
                 <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Popular FAQs</div>
@@ -630,83 +629,6 @@
     </div>
     <!-- FAQs Start -->
 
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-1 mb-3">Contact Us</div>
-                <h1 class="mb-4">If You Have Any Query</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <p class="text-center mb-4">or need assistance, please reach out to our support team</p>
-                    <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form>
-                            <div class="row g-3 text-dark">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name"
-                                            placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email"
-                                            placeholder="Your Email">
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject"
-                                            placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid bg-primary newsletter py-5">
-        <div class="container">
-            <div class="row g-5 align-items-center">
-                <div class="col-md-5 ps-lg-0 pt-5 pt-md-0 text-start wow fadeIn" data-wow-delay="0.3s">
-                    <img class="img-fluid" src="{{ url('') }}/assets/images/newsletter.png" alt="">
-                </div>
-                <div class="col-md-7 py-5 newsletter-text wow fadeIn" data-wow-delay="0.5s">
-                    <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Newsletter</div>
-                    <h1 class="text-white mb-4">Let's subscribe the newsletter</h1>
-                    <div class="position-relative w-100 mt-3 mb-2">
-                        <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text"
-                            placeholder="Enter Your Email" style="height: 48px;">
-                        <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i
-                                class="fa fa-paper-plane text-primary fs-4"></i></button>
-                    </div>
-                    <small class="text-white-50">To stay up to date with our latest stories</small>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter End -->
-
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5">
         <div class="container py-5">
@@ -779,8 +701,29 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top pt-2"><i
-            class="bi bi-arrow-up"></i></a>
+    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-squaresa ai-chat pt-2">
+        <i class="bi bi-chat"></i></a> -->
+    
+        <!-- Chat Floating Button -->
+    <button class="btn btn-lg btn-primary rounded-circle chat-button" id="chatToggle">
+        <i class="bi bi-chat-dots"></i>
+    </button>
+
+    <!-- Chat Box -->
+    <div class="chat-box" id="chatBox">
+        <div class="chat-header">AI Chatbot</div>
+        <div class="chat-body">
+            <p class="small p-2 rounded-3 bg-body-tertiary text-dark" id="response"></p>
+        </div>
+        <div class="chat-footer">
+            <form class="col-12" method="post">
+                <div class="text-muted d-flex justify-content-start align-items-center">
+                    <textarea name="message" id="message" class="form-control" id="exampleFormControlInput1" placeholder="Enter your message" required style="height: 10px;"></textarea>
+                  <button class="btn btn-primary ms-3" id="form-btn"><i class="fas fa-paper-plane"></i></button> 
+                </div>
+                </form>
+        </div>
+    </div>
 
 
     <!-- JavaScript Libraries -->
@@ -793,7 +736,39 @@
     <script src="{{ url('') }}/assets/libs/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="{{ url('') }}/assets/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle Chat Box
+            $('#chatToggle').on('click', function () {
+                $('#chatBox').toggle();
+            });
+
+            $("form").submit(function(e){
+            e.preventDefault();
+            $('#form-btn').addClass('disabled');
+            $('#response').text('Processsing...');
+            var token = $('meta[name="csrf-token"]').attr('content');
+            var message = $('#message').val();
+            $.ajax({
+                type: 'POST',
+                url:  "/chat-message",
+                data: {_token:token,message: message},
+                      success: function(data) {
+                        var parsedJson = jQuery.parseJSON(data);
+
+                        if (typeof parsedJson.msg != 'undefined') {
+                            $('#response').text(parsedJson.msg);
+                            $('#form-btn').removeClass('disabled');
+                        }
+                      }
+            });
+
+        });
+        });
+    </script>
 </body>
 
 </html>

@@ -25,6 +25,7 @@ class HomepageController extends Controller
     * Method for AI chatbot
     **/
     public function chatMessage(Request $request){
+        try {
         // get the input message
         $message = $request->input('message');
 
@@ -34,5 +35,8 @@ class HomepageController extends Controller
         $final_msg = ['msg' => $result->text()];
 
         return json_encode(['msg' => $result->text()]);
+        }catch(Exception $e){
+            return json_encode(['msg' => $e]);
+        }
     }
 }

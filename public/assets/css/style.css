@@ -287,3 +287,13 @@ form .buttons button,
     background-position: cover;
     width: 100%;
 }
+span.notice {
+    height: 6px;
+    width: 6px;
+    background: #ff0000;
+    display: inline-block;
+    border-radius: 15px;
+    position: relative;
+    top: -11px;
+    left: -5px;
+}

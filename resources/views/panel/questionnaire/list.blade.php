@@ -35,28 +35,35 @@
                                 <table id="example" class="display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Questionnaire Title</th>
-                                            <th scope="col">Case Number</th>
-                                            <th scope="col">Questionnaire</th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Question</th>
+                                            <th scope="col">Correct Answer</th>
+                                            <th scope="col">Biased Answer</th>
+                                            <th scope="col">Wrong Answer<s/th>
                                             <th scope="col">Creation Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="col-sm ">
-                                        @foreach ($getRecord as $value)
+                                        @foreach ($result as $value)
                                             <tr>
-                                                <th scope="row">{{ $value->id }}</th>
-                                                <td>{{ $value->questionnaire_title }}</td>
-                                                <td>{{ $value->case_number }}</td>
-                                                <td>{{ $value->questionnaire }}</td>
-                                                <td>{{ $value->created_at }}</td>
+                                                <th scope="row">{{ $value['questionId'] }}</th>
+                                                <td>{{ $value['question'] }}</td>
+                                                <td>{{ $value['trueAns'] }}</td>
+                                                <td>{{ $value['biasedAns'] }}</td>
+                                                <td>
+                                                    <ul>
+                                                        <li>{{ $value['wrongAns1'] }}</li>
+                                                        <li>{{ $value['wrongAns2'] }}</li>
+                                                    </ul>
+                                                </td>
+                                                <td>{{ $value['createdAt'] }}</td>
                                                 <td>
 
-                                                    <a href="{{ url('panel/questionnaire/edit/' . $value->id) }}"
+                                                    <a href="{{ url('panel/questionnaire/edit/' . $value['questionId']) }}"
                                                         class="btn btn-success btn-sm"><i
                                                             class="fa-solid fa-pen-to-square"></i>Edit</a>
-                                                    <a href="{{ url('panel/questionnaire/delete/' . $value->id) }}"
+                                                    <a href="{{ url('panel/questionnaire/delete/' . $value['questionId']) }}"
                                                         class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill mr-4"><i
                                                                 class="fa-solid fa-trash"></i>Delete</a>
 

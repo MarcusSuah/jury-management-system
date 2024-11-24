@@ -21,7 +21,7 @@
                         <div class="mb-3">
                             <label for="case-type" class="form-label">Case Type</label>
                             <select class="form-select" name="case_type" value="{{ $getRecord->case_type }}" required>
-                                <option value="">Select case type</option>
+                                <option value="{{ $getRecord->case_type }}" selected>{{ $getRecord->case_type }}</option>
                                 <option value="Criminal">Criminal</option>
                                 <option value="Civil">Civil</option>
                             </select>
@@ -40,7 +40,7 @@
                         <div class="mb-3">
                             <label for="inputStatus" class="form-label">Case Status</label>
                             <select id="inputStatus" class="form-select" name="status" value="{{ $getRecord->status }}">
-                                <option selected disabled>Select Case Status</option>
+                                <option value="{{ $getRecord->status }}">{{ $getRecord->status }}</option>
                                 <option>Finished</option>
                                 <option>Important</option>
                                 <option>Ongoing</option>
