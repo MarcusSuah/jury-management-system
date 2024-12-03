@@ -31,7 +31,6 @@
                             <input type="text" name="name" class="form-control" id="inputText" required>
                         </div>
 
-
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

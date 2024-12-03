@@ -20,94 +20,6 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
-            <div class="row">
-                <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Summon</p>
-                                    <h4 class="mb-2">120</h4>
-                                    <p class="text-muted mb-0"><span class="text-warning fw-bold font-size-18 me-2">Total
-                                            Summon</span>
-                                    </p>
-                                </div>
-                                <div class="avatar-lg">
-                                    <span class="avatar-title bg-light text-warning rounded-3">
-                                        <i class="fa-solid fa-rectangle-list"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Judges</p>
-                                    <h4 class="mb-2">938</h4>
-                                    <p class="text-muted mb-0"><span class="text-info fw-bold font-size-18 me-2">Total
-                                            Judges
-                                        </span></p>
-                                </div>
-                                <div class="avatar-lg">
-                                    <span class="avatar-title bg-light text-info rounded-3">
-                                        <i class="fa-solid fa-gavel"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Court</p>
-                                    <h4 class="mb-2">1238</h4>
-                                    <p class="text-muted mb-0"><span
-                                            class="text-danger fw-bold font-size-18 me-2">Locations</span></p>
-                                </div>
-                                <div class="avatar-lg">
-                                    <span class="avatar-title bg-light text-danger rounded-3">
-                                        <i class="fa-solid fa-map-location"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-
-
-
-                <div class="col-xl-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <p class="text-truncate font-size-14 mb-2">Case Type</p>
-                                    <h4 class="mb-2">598</h4>
-                                    <p class="text-muted mb-0"><span class="text-primary fw-bold font-size-18 me-2">Archive
-                                            Cases
-                                        </span></p>
-                                </div>
-                                <div class="avatar-lg">
-                                    <span class="avatar-title bg-light text-primary rounded-3">
-                                        <i class="fa-solid fa-file-zipper"></i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div><!-- end cardbody -->
-                    </div><!-- end card -->
-                </div><!-- end col -->
-
-            </div><!-- end row -->
 
             <div class="row">
                 <div class="col-12">
@@ -143,30 +55,37 @@
                                                 <td>{{ $value->address }}</td>
                                                 <td>{{ $value->created_at }}</td>
                                                 <td>
-                                                    <a title="View Message" href="#" class="btn btn-primary btn-sm viewMsg"><i
+                                                    <a title="View Message" href="#"
+                                                        class="btn btn-primary btn-sm viewMsg"><i
                                                             class="fa-solid fa-eye"></i> Message
                                                         <!-- Modal -->
-                                                    <div class="modal msgModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">{{ $value->name }} Summon Message</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body " value="message">
-                                                                <p style="
+                                                        <div class="modal msgModal" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                                            {{ $value->name }} Summon Message</h5>
+                                                                        <button type="button" class="btn-close"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body " value="message">
+                                                                        <p
+                                                                            style="
                                                                 color: #080804;
                                                                 width: 100%;
                                                                 text-wrap: initial;
                                                                 text-align: left;
                                                                 font-size: 16px;
-                                                            ">{{ base64_decode($value->message) }}</p>
-                                                            </div>
+                                                            ">
+                                                                            {{ base64_decode($value->message) }}</p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                        </a>
-                                                    
+                                                    </a>
+
                                                     <a href="{{ url('panel/summon/edit/' . $value->id) }}"
                                                         class="btn btn-success btn-sm"><i
                                                             class="fa-solid fa-pen-to-square"></i> Edit</a>
@@ -187,25 +106,24 @@
     </div>
 @endsection
 @section('script')
-<script>
-    $(document).ready(function(){
-        $.each($(".viewMsg"),function(){
-            $(this).click(function(){
-                $(this).find(".msgModal").css("display","flex");
-                $(this).find(".msgModal").css("opacity","1");
-                $(this).find(".msgModal").addClass("show");
+    <script>
+        $(document).ready(function() {
+            $.each($(".viewMsg"), function() {
+                $(this).click(function() {
+                    $(this).find(".msgModal").css("display", "flex");
+                    $(this).find(".msgModal").css("opacity", "1");
+                    $(this).find(".msgModal").addClass("show");
+                });
             });
-        });
 
-        $.each($(".btn-close"),function(){
-            $(this).click(function(){
-                document.location.reload();
-                //  $(this).parent(".msgModal").css("display","done");
-                //  $(this).parent(".msgModal").css("opacity","0");
-                //  $(this).parent(".msgModal").removeClass("show");
+            $.each($(".btn-close"), function() {
+                $(this).click(function() {
+                    document.location.reload();
+                    //  $(this).parent(".msgModal").css("display","done");
+                    //  $(this).parent(".msgModal").css("opacity","0");
+                    //  $(this).parent(".msgModal").removeClass("show");
+                });
             });
         });
-    });
-    
-</script>
+    </script>
 @endsection

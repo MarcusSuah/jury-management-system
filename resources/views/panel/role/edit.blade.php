@@ -3,17 +3,19 @@
 @section('content')
     <div class="pagetitle">
         <h1>EDIT ROLES</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-        </nav>
+        <div class="row">
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div>
     </div>
 
     <section class="section dashboard">
 
-        <div class="col-lg-8  mx-auto p-2">
+        <div class="col-lg-8  mx-auto p-8">
 
             <div class="card">
                 <div class="card-body">
@@ -31,7 +33,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
 
     </section>

@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-6 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
+                    <div class="col-xl-6 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex">
@@ -64,49 +64,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="text-truncate font-size-14 mb-2">Judges</p>
-                                        <h4 class="mb-2"></h4>
-                                        <p class="text-muted mb-0"><span class="text-info fw-bold font-size-18 me-2">Total
-                                                Judges
-                                            </span></p>
-                                    </div>
-                                    <div class="avatar-lg">
-                                        <span class="avatar-title bg-light text-info rounded-3">
-                                            <i class="fa-solid fa-gavel"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <p class="text-truncate font-size-14 mb-2">Cases</p>
-                                        <h4 class="mb-2"></h4>
-                                        <p class="text-muted mb-0"><span class="text-danger fw-bold font-size-18 me-2">Total
-                                                Cases</span></p>
-                                    </div>
-                                    <div class="avatar-lg">
-                                        <span class="avatar-title bg-light text-danger rounded-3">
-                                            <i class="fa-solid fa-newspaper"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">

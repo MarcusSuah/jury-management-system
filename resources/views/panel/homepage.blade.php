@@ -88,13 +88,15 @@
         .contact-link:hover {
             text-decoration: underline;
         }
-        .ai-chat{
+
+        .ai-chat {
             position: fixed;
             display: inline;
             right: 45px;
             bottom: 45px;
             z-index: 99;
         }
+
         .chat-button {
             position: fixed;
             bottom: 20px;
@@ -149,11 +151,11 @@
 
 
     <!-- Navbar Start -->
-    <div class="container-fluid sticky-top">
+    <div class="container-fluid sticky-top" id="home">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
                 <a href="#" class="navbar-brand">
-                    <h1 class="text-white">JMS<span class="text-dark">|</span>AI-Featured</h1>
+                    <h1 class="text-white">JSMS<span class="text-dark">|</span>AI-Featured</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -161,16 +163,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#" class="nav-item nav-link active">Home</a>
+                        <a href="#faqs" class="nav-item nav-link">FAQs</a>
                         <a href="#service" class="nav-item nav-link">Services</a>
                         <a href="{{ route('ai-chatbot') }}" class="nav-item nav-link">AI Chatbot</a>
-                        @if(Auth::check())
+                        @if (Auth::check())
                             <button type="button" class="btn text-white bg-dark pd-0 d-lg-block rounded-pill "><a
-                                href="{{ url('/panel/dashboard') }}" class="nav-item">My Account</a></button>
+                                    href="{{ url('/panel/dashboard') }}" class="nav-item">My Account</a></button>
                         @else
                             <button type="button" class="btn text-white bg-dark pd-0 d-lg-block rounded-pill "><a
-                        href="{{ url('/login') }}" class="nav-item">Login</a></button>
+                                    href="{{ url('/login') }}" class="nav-item">Login</a></button>
                         @endif
                     </div>
                 </div>
@@ -273,13 +275,14 @@
 
 
     <!-- Service Start -->
-    <div class="container-fluid bg-light mt-5 py-5">
+    <div class="container-fluid bg-light mt-5 py-5" id="service">
         <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
                     <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3 fs-3">Our Services</div>
                     <h1 class="mb-4">Our Excellent AI Solutions for Jury Selection</h1>
-                    <p class="mb-4 text-dark">The AI Jury Management System has revolutionized our jury selection
+                    <p class="mb-4 text-dark">The AI Jury Selection Management System has revolutionized our jury
+                        selection
                         process. The
                         efficiency and accuracy are unparalleled.</p>
                     <a class="btn btn-primary rounded-pill px-4" href="">Read More</a>
@@ -292,10 +295,12 @@
                                     <div
                                         class="service-item d-flex flex-column justify-content-center text-center rounded">
                                         <div class="service-icon btn-square">
-                                            <i class="fa-solid fa-vr-cardboard fa-4x"></i>
+                                            {{-- <i class="fa-solid fa-vr-cardboard fa-4x"></i> --}}
+                                            <i class="fa-solid fa-microchip fa-4x"></i>
                                         </div>
-                                        <h5 class="mb-3">Virtual Assistants</h5>
-                                        <p>Machine learning algorithms to enhance decision-making and accuracy.</p>
+                                        <h5 class="mb-3">AI Chatbot Assistance</h5>
+                                        <p>Designed to simulate conversation with humans, who often used our website.
+                                        </p>
                                         <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                                     </div>
                                 </div>
@@ -303,10 +308,12 @@
                                     <div
                                         class="service-item d-flex flex-column justify-content-center text-center rounded">
                                         <div class="service-icon btn-square">
-                                            <i class="fa fa-robot fa-4x"></i>
+                                            <i class="fa fa-paper-plane fa-4x"></i>
                                         </div>
-                                        <h5 class="mb-3">Machine learning</h5>
-                                        <p>Machine learning algorithms to enhance decision-making and accuracy.</p>
+                                        <h5 class="mb-3">AI Jury Summoning</h5>
+                                        <p> Randomized selection algorithms ensure the selection process is truly random
+                                            while maintaining
+                                            compliance with legal requirements, like ensuring diverse jury pools.</p>
                                         <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                                     </div>
                                 </div>
@@ -347,8 +354,8 @@
 
 
     <!-- Feature Start -->
-    <div class="container-fluid  feature">
-        <div class="container pt-2">
+    <div class="container-fluid  feature py-5">
+        <div class="container pt-2 mb-5">
             <div class="row g-5">
                 <div class="col-lg-6 align-self-center mb-md-5 pb-md-5 wow fadeIn" data-wow-delay="0.3s">
                     <div class="btn btn-sm border rounded-pill text-white px-3 mb-3 fs-3"></div>
@@ -416,10 +423,10 @@
 
 
     <!-- FAQs Start -->
-    <div class="container-fluid py-2 bg-primary">
-        <div class="container py-2">
+    <div class="container-fluid py-5 bg-primary mt-5" id="faqs">
+        <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Popular FAQs</div>
+                <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Popular FAQs</div>
                 <h1 class="mb-4">Frequently Asked Questions</h1>
             </div>
             <div class="row">
@@ -680,7 +687,8 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Jury Management System </a>, AI-Enabled.
+                        &copy; <a class="border-bottom" href="#">Jury Selection Management System </a>,
+                        AI-Enabled.
 
                         Designed By : <a class="border-bottom" href="#">S. Marcus Suah</a> Computing Information
                         Science Student <a class="border-bottom" href="#">UNILAK</a>
@@ -690,7 +698,7 @@
                             <a href="#home">Home</a>
                             <a href="">Cookies</a>
                             <a href="">Help</a>
-                            <a href="">FAQs</a>
+                            <a href="#faqs">FAQs</a>
                         </div>
                     </div>
                 </div>
@@ -703,8 +711,8 @@
     <!-- Back to Top -->
     <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-squaresa ai-chat pt-2">
         <i class="bi bi-chat"></i></a> -->
-    
-        <!-- Chat Floating Button -->
+
+    <!-- Chat Floating Button -->
     <button class="btn btn-lg btn-primary rounded-circle chat-button" id="chatToggle">
         <i class="bi bi-chat-dots"></i>
     </button>
@@ -718,10 +726,11 @@
         <div class="chat-footer">
             <form class="col-12" method="post">
                 <div class="text-muted d-flex justify-content-start align-items-center">
-                    <textarea name="message" id="message" class="form-control" id="exampleFormControlInput1" placeholder="Enter your message" required style="height: 10px;"></textarea>
-                  <button class="btn btn-primary ms-3" id="form-btn"><i class="fas fa-paper-plane"></i></button> 
+                    <textarea name="message" id="message" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Enter your message" required style="height: 10px;"></textarea>
+                    <button class="btn btn-primary ms-3" id="form-btn"><i class="fas fa-paper-plane"></i></button>
                 </div>
-                </form>
+            </form>
         </div>
     </div>
 
@@ -740,33 +749,36 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="{{ url('') }}/assets/js/main.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Toggle Chat Box
-            $('#chatToggle').on('click', function () {
+            $('#chatToggle').on('click', function() {
                 $('#chatBox').toggle();
             });
 
-            $("form").submit(function(e){
-            e.preventDefault();
-            $('#form-btn').addClass('disabled');
-            $('#response').text('Processsing...');
-            var token = $('meta[name="csrf-token"]').attr('content');
-            var message = $('#message').val();
-            $.ajax({
-                type: 'POST',
-                url:  "/chat-message",
-                data: {_token:token,message: message},
-                      success: function(data) {
+            $("form").submit(function(e) {
+                e.preventDefault();
+                $('#form-btn').addClass('disabled');
+                $('#response').text('Processsing...');
+                var token = $('meta[name="csrf-token"]').attr('content');
+                var message = $('#message').val();
+                $.ajax({
+                    type: 'POST',
+                    url: "/chat-message",
+                    data: {
+                        _token: token,
+                        message: message
+                    },
+                    success: function(data) {
                         var parsedJson = jQuery.parseJSON(data);
 
                         if (typeof parsedJson.msg != 'undefined') {
                             $('#response').text(parsedJson.msg);
                             $('#form-btn').removeClass('disabled');
                         }
-                      }
-            });
+                    }
+                });
 
-        });
+            });
         });
     </script>
 </body>

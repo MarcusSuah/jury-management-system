@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Jury Management System.
+                </script> © Jury Selection Management System.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Designed with <i class="mdi mdi-heart text-danger"></i> by Marcus
+                    Designed by: <a href="https://call.whatsapp.com/video/1tLdc5fGXwumYQxCS2dOWk">S. Marcus Suah</a>
                 </div>
             </div>
         </div>
