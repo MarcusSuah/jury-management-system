@@ -31,18 +31,12 @@
                             <input type="date" class="form-control" name="court_date"
                                 value="{{ $getRecord->court_date }}" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="judge" class="form-label">Assigned Judge</label>
-                            <input type="text" class="form-control" name="assig_judge"
-                                value="{{ $getRecord->assig_judge }}" required>
-                        </div>
 
                         <div class="mb-3">
                             <label for="inputStatus" class="form-label">Case Status</label>
                             <select id="inputStatus" class="form-select" name="status" value="{{ $getRecord->status }}">
                                 <option value="{{ $getRecord->status }}">{{ $getRecord->status }}</option>
                                 <option>Finished</option>
-                                <option>Important</option>
                                 <option>Ongoing</option>
                                 <option>Pending</option>
                             </select>

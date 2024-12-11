@@ -23,19 +23,20 @@
         <div class="d-flex">
             <div class="dropdown d-inline-block">
                 @hasrole('jury')
-                    @if(isset($quiz) && $quiz > 0)
-                    <a href="#" data-bs-toggle="dropdown" class="notice"> 
-                        <i class="fa fa-bell text-white"></i>
-                        <span class="notice"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-                        <li class="dropdown-header">
-                        You have a pending Quiz
-                        <a href="{{ url('/panel/view-pending-quiz') }}"><span class="badge rounded-pill bg-primary p-2 ms-2">View Quiz</span></a>
-                        </li>
-                    </ul>
+                    @if (isset($quiz) && $quiz > 0)
+                        <a href="#" data-bs-toggle="dropdown" class="notice">
+                            <i class="fa fa-bell text-white"></i>
+                            <span class="notice"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                            <li class="dropdown-header">
+                                You have a pending Quiz
+                                <a href="{{ url('/panel/view-pending-quiz') }}"><span
+                                        class="badge rounded-pill bg-primary p-2 ms-2">View Quiz</span></a>
+                            </li>
+                        </ul>
                     @else
-                        <a href="#" class="notice"> 
+                        <a href="#" class="notice">
                             <i class="fa fa-bell text-white"></i>
                         </a>
                     @endif
@@ -45,22 +46,22 @@
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="{{ url('') }}/assets/images/1.jpeg"
                         alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }} 
+                    <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}
                         | <small>
                             @hasrole('superadmin')
-                            Superadmin
+                                Superadmin
                             @endrole
 
                             @hasrole('admin')
-                            Admin
+                                Admin
                             @endrole
 
                             @hasrole('jury')
-                            Jury
+                                Jury
                             @endrole
 
                             @hasrole('judge')
-                            Judge
+                                Judge
                             @endrole
                         </small>
                     </span>

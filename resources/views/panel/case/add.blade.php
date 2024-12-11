@@ -34,7 +34,6 @@
                             <select id="inputStatus" class="form-select" name="status">
                                 <option selected disabled>Select Case Status</option>
                                 <option>Finished</option>
-                                <option>Important</option>
                                 <option>Ongoing</option>
                                 <option>Pending</option>
                             </select>

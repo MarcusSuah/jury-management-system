@@ -49,7 +49,7 @@ class CourtCaseController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = CourtCase::getSingle($id);
-        
+
         return view("panel.case.edit", $data);
     }
 

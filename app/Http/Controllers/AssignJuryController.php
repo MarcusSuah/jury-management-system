@@ -6,6 +6,7 @@ use App\Models\AssignJury;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class AssignJuryController extends Controller
 {
@@ -74,34 +75,18 @@ class AssignJuryController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Method to Display the jury cases
      */
-    public function show(AssignJury $assignJury)
+    public function viewCases($user_id)
     {
-        //
-    }
+        $data["getRecord"] = DB::table('assign_juries')
+            ->join('jurors', 'jurors.id', '=', 'assign_juries.juror_id')
+            ->join('courts', 'courts.id', '=', 'assign_juries.court_id')
+            ->join('court_cases', 'court_cases.id', '=', 'assign_juries.case_id')
+            ->where('jurors.user_id', Auth::user()->id)
+            ->distinct('assign_juries.court_id')
+            ->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AssignJury $assignJury)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AssignJury $assignJury)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AssignJury $assignJury)
-    {
-        //
+        return view("panel.jury.jury-assign-list", $data);
     }
 }

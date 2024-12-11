@@ -123,7 +123,6 @@
                                             <th>Title</th>
                                             <th>Case Type</th>
                                             <th>Court Date</th>
-                                            <th>Assigned Judge</th>
                                             <th>Case Status</th>
                                             <th>Date</th>
                                             <th>Action</th>
@@ -137,7 +136,6 @@
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->case_type }}</td>
                                                 <td>{{ $value->court_date }}</td>
-                                                <td>{{ $value->assig_judge }}</td>
                                                 <td>{{ $value->status }}</td>
                                                 <td>{{ $value->created_at }}</td>
                                                 <td>

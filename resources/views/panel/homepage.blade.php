@@ -136,6 +136,11 @@
             padding: 10px;
             border-top: 1px solid #ddd;
         }
+
+        #request>span {
+            width: fit-content;
+            float: right;
+        }
     </style>
 </head>
 
@@ -171,6 +176,15 @@
                             <button type="button" class="btn text-white bg-dark pd-0 d-lg-block rounded-pill "><a
                                     href="{{ url('/panel/dashboard') }}" class="nav-item">My Account</a></button>
                         @else
+                            <div class="dropdown show">
+                                <a href="#" id="dropdownMenuLink"
+                                    class="nav-item nav-link dropdown-toggle">Register</a>
+
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ url('register-jury') }}">Register as Jury</a>
+                                    <a class="dropdown-item" href="{{ url('register-judge') }}">Register as Judge</a>
+                                </div>
+                            </div>
                             <button type="button" class="btn text-white bg-dark pd-0 d-lg-block rounded-pill "><a
                                     href="{{ url('/login') }}" class="nav-item">Login</a></button>
                         @endif
@@ -721,19 +735,23 @@
     <div class="chat-box" id="chatBox">
         <div class="chat-header">AI Chatbot</div>
         <div class="chat-body">
+            <!-- <div class="chat-cover"> -->
+            <p class="mb-4" id="request">
+                <span class="small bg-primary text-end p-1 rounded-3 text-white"></span>
+            </p>
             <p class="small p-2 rounded-3 bg-body-tertiary text-dark" id="response"></p>
+            <!-- </div> -->
         </div>
         <div class="chat-footer">
             <form class="col-12" method="post">
                 <div class="text-muted d-flex justify-content-start align-items-center">
-                    <textarea name="message" id="message" class="form-control" id="exampleFormControlInput1"
-                        placeholder="Enter your message" required style="height: 10px;"></textarea>
+                    <textarea name="message" id="message" class="form-control" placeholder="Enter your message" required
+                        style="height: 10px;"></textarea>
                     <button class="btn btn-primary ms-3" id="form-btn"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </form>
         </div>
     </div>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -755,12 +773,18 @@
                 $('#chatBox').toggle();
             });
 
+            $('#dropdownMenuLink').on('click', function() {
+                $('.dropdown-menu').toggle();
+            });
+
             $("form").submit(function(e) {
                 e.preventDefault();
                 $('#form-btn').addClass('disabled');
                 $('#response').text('Processsing...');
                 var token = $('meta[name="csrf-token"]').attr('content');
                 var message = $('#message').val();
+                $('#message').val();
+                $('#message').text();
                 $.ajax({
                     type: 'POST',
                     url: "/chat-message",
@@ -772,8 +796,14 @@
                         var parsedJson = jQuery.parseJSON(data);
 
                         if (typeof parsedJson.msg != 'undefined') {
+                            $('#request span').text(message);
                             $('#response').text(parsedJson.msg);
                             $('#form-btn').removeClass('disabled');
+                            // $('.chat-body').append(`
+                        // <p class="mb-4" id="request">
+                        //     <span class="small bg-primary text-end p-1 rounded-3 text-white">${message}</span>
+                        // </p>
+                        // `);
                         }
                     }
                 });

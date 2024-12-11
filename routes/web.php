@@ -50,6 +50,10 @@ Route::middleware('auth')->group(function () {
     Route::post("panel/jury/edit/{id}", [JurorController::class, "update"]);
     Route::get("panel/jury/delete/{id}", [JurorController::class, "delete"]);
     Route::get("panel/jury/assign", [JurorController::class, "assign"]);
+    Route::get("panel/jury/approve/{id}", [JurorController::class, "approveJury"]);
+    Route::get("panel/jury/deny/{id}", [JurorController::class, "denyJury"]);
+    Route::get("panel/jury/activate/{id}", [JurorController::class, "activateJury"]);
+    Route::get("panel/jury/disable/{id}", [JurorController::class, "disableJury"]);
 
     // Case Route
     Route::get("panel/case", [CourtCaseController::class, "list"]);
@@ -74,6 +78,10 @@ Route::middleware('auth')->group(function () {
     Route::get("panel/judge/edit/{id}", [JudgeController::class, "edit"]);
     Route::post("panel/judge/edit/{id}", [JudgeController::class, "update"]);
     Route::get("panel/judge/delete/{id}", [JudgeController::class, "delete"]);
+    Route::get("panel/judge/approve/{id}", [JudgeController::class, "approveJudge"]);
+    Route::get("panel/judge/deny/{id}", [JudgeController::class, "denyJudge"]);
+    Route::get("panel/judge/activate/{id}", [JudgeController::class, "activateJudge"]);
+    Route::get("panel/judge/disable/{id}", [JudgeController::class, "disableJudge"]);
 
     // Summon Routes
     Route::get("panel/summon", [SummonController::class, "list"]);
@@ -109,13 +117,14 @@ Route::middleware('auth')->group(function () {
     Route::get("panel/assignjury/add", [AssignJuryController::class, "add"]);
     Route::post("panel/assignjury/add", [AssignJuryController::class, "insert"]);
     Route::get("panel/assignjury/list", [AssignJuryController::class, "list"]);
+    // Juror cases
+    Route::get("view-jury-cases/{user_id}", [AssignJuryController::class, "viewCases"]);
 
     Route::get("panel/assignjudge/add", [AssignJudgeController::class, "add"]);
     Route::post("panel/assignjudge/add", [AssignJudgeController::class, "insert"]);
     Route::get("panel/assignjudge/list", [AssignJudgeController::class, "list"]);
-
-    // User cases
-    Route::get("view-cases/{user_id}", [AssignJudgeController::class, "viewCases"]);
+    // Judge cases
+    Route::get("view-judge-cases/{user_id}", [AssignJudgeController::class, "viewCases"]);
 
     // Court Report Routes
     Route::get("court-report", [ReportController::class, "courtReport"]);
@@ -129,3 +138,11 @@ Route::middleware('auth')->group(function () {
     Route::get("summon-report", [ReportController::class, "summonReport"]);
     Route::post("generate-summon-report", [ReportController::class, "generateSummonReport"])->name('generate-summon-report');
 });
+
+// Register Judge
+Route::get("register-judge", [JudgeController::class, "registerJudge"]);
+Route::post("register-judge", [JudgeController::class, "insert"]);
+
+// Register Jury
+Route::get("register-jury", [JurorController::class, "registerJuror"]);
+Route::post("register-jury", [JurorController::class, "insert"]);

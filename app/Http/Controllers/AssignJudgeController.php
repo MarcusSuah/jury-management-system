@@ -41,8 +41,9 @@ class AssignJudgeController extends Controller
             ]
         );
         $unique_entry = DB::table("assign_judges")
-            ->join('court_cases','court_cases.id','assign_judges.case_id')
-            ->Where('court_cases.status','Ongoing')
+            ->join('court_cases', 'court_cases.id', 'assign_judges.case_id')
+            ->Where('court_cases.status', '!=', 'Finished')
+            ->Where('court_cases.id', $request->case)
             ->count();
         if ($unique_entry > 0) {
             return redirect()->back()->with("error", "The case is ongoing, Judge cannot be assigned.");
@@ -71,7 +72,8 @@ class AssignJudgeController extends Controller
         return view("panel.assignment.list-assign-judge", $data);
     }
 
-    public function viewCases($user_id){
+    public function viewCases($user_id)
+    {
         $data["getRecord"] = DB::table('assign_judges')
             ->join('judges', 'judges.id', '=', 'assign_judges.judge_id')
             ->join('courts', 'courts.id', '=', 'assign_judges.court_id')
@@ -79,7 +81,6 @@ class AssignJudgeController extends Controller
             ->where('judges.user_id', Auth::user()->id)
             ->distinct('assign_judges.court_id')
             ->get();
-        //dd($data);
 
         return view("panel.judge.judge-assign-list", $data);
     }

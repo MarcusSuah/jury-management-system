@@ -7,15 +7,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Questionnaire</h4>
-
+                        <h4 class="mb-sm-0">Quiz Dashboard</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
                                 <li class="breadcrumb-item active"> Dashboard</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -30,7 +28,8 @@
                                     {{ csrf_field() }}
                                     <div class="col-12">
                                         <label for="inputText" class="col-sm-2 form-label">Question</label>
-                                        <input type="text" name="question" class="form-control" value="{{ old('question') }}" required>
+                                        <input type="text" name="question" class="form-control"
+                                            value="{{ old('question') }}" required>
                                         @if ($errors->has('question'))
                                             <span class="text-danger">
                                                 <strong>{{ $errors->first('question') }}</strong>
@@ -39,7 +38,8 @@
                                     </div>
                                     <div class="col-12">
                                         <label for="inputText" class="col-sm-2 form-label text-success">True Answer</label>
-                                        <input type="text" name="true_answer" class="form-control" value="{{ old('true_answer') }}" required>
+                                        <input type="text" name="true_answer" class="form-control"
+                                            value="{{ old('true_answer') }}" required>
                                         @if ($errors->has('true_answer'))
                                             <span class="text-danger">
                                                 <strong>{{ $errors->first('true_answer') }}</strong>
@@ -47,8 +47,10 @@
                                         @endif
                                     </div>
                                     <div class="col-12">
-                                        <label for="inputText" class="col-sm-2 form-label text-warning">Biased Answer</label>
-                                        <input type="text" name="biased_answer" class="form-control" value="{{ old('biased_answer') }}" required>
+                                        <label for="inputText" class="col-sm-2 form-label text-warning">Biased
+                                            Answer</label>
+                                        <input type="text" name="biased_answer" class="form-control"
+                                            value="{{ old('biased_answer') }}" required>
                                         @if ($errors->has('biased_answer'))
                                             <span class="text-danger">
                                                 <strong>{{ $errors->first('biased_answer') }}</strong>
@@ -57,7 +59,8 @@
                                     </div>
                                     <div class="col-12">
                                         <label for="inputText" class="col-sm-2 form-label text-danger">Wrong Answer</label>
-                                        <input type="text" name="wrong_answer_1" class="form-control" value="{{ old('wrong_answer_1') }}" required>
+                                        <input type="text" name="wrong_answer_1" class="form-control"
+                                            value="{{ old('wrong_answer_1') }}" required>
                                         @if ($errors->has('wrong_answer_1'))
                                             <span class="text-danger">
                                                 <strong>{{ $errors->first('wrong_answer_1') }}</strong>
@@ -66,7 +69,8 @@
                                     </div>
                                     <div class="col-12">
                                         <label for="inputText" class="col-sm-2 form-label text-danger">Wrong Answer</label>
-                                        <input type="text" name="wrong_answer_2" class="form-control" value="{{ old('wrong_answer_2') }}" required>
+                                        <input type="text" name="wrong_answer_2" class="form-control"
+                                            value="{{ old('wrong_answer_2') }}" required>
                                         @if ($errors->has('wrong_answer_2'))
                                             <span class="text-danger">
                                                 <strong>{{ $errors->first('wrong_answer_2') }}</strong>

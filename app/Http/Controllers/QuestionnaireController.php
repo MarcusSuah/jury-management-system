@@ -13,11 +13,11 @@ class QuestionnaireController extends Controller
     {
         $data = Questionnaire::getRecord();
         $result = [];
-        if(!empty($data)){
-            foreach($data as $question){
-                $trueAns = Answers::where('questionnaire_id', $question->id)->where('type','true')->select('answer')->get();
-                $biasedAns = Answers::where('questionnaire_id', $question->id)->where('type','biased')->select('answer')->get();
-                $wrongAns = Answers::where('questionnaire_id', $question->id)->where('type','wrong')->select('answer')->get();
+        if (!empty($data)) {
+            foreach ($data as $question) {
+                $trueAns = Answers::where('questionnaire_id', $question->id)->where('type', 'true')->select('answer')->get();
+                $biasedAns = Answers::where('questionnaire_id', $question->id)->where('type', 'biased')->select('answer')->get();
+                $wrongAns = Answers::where('questionnaire_id', $question->id)->where('type', 'wrong')->select('answer')->get();
                 $result[] = [
                     'questionId' => $question->id,
                     'question' => $question->question,
@@ -45,14 +45,14 @@ class QuestionnaireController extends Controller
             'wrong_answer_2' => ['required', 'string', 'max:100'],
         ]);
         if ($validatedFields->fails()) {
-            \Session::flash('msgErr','Oops! Question was not created, try again.' );
+            \Session::flash('msgErr', 'Oops! Question was not created, try again.');
             return redirect()->back()->withErrors($validatedFields->errors())->withInput();
-        }else{
+        } else {
             // Create Juror user account
             $questionnaire = new Questionnaire;
             $questionnaire->question = $request->question;
             $questionnaire->save();
-           
+
             // True Answers
             $trueAnswer = new Answers;
             $trueAnswer->questionnaire_id = $questionnaire->id;
@@ -82,35 +82,33 @@ class QuestionnaireController extends Controller
 
             return redirect("panel/questionnaire")->with("success", "Questionnaire successfully created");
         }
-
-        
     }
     public function edit($id)
     {
         $question = Questionnaire::getSingle($id);
         $result = [];
-        if(!empty($question)){
-            $trueAns = Answers::where('questionnaire_id', $question->id)->where('type','true')->get();
-            $biasedAns = Answers::where('questionnaire_id', $question->id)->where('type','biased')->get();
-            $wrongAns = Answers::where('questionnaire_id', $question->id)->where('type','wrong')->get();
+        if (!empty($question)) {
+            $trueAns = Answers::where('questionnaire_id', $question->id)->where('type', 'true')->get();
+            $biasedAns = Answers::where('questionnaire_id', $question->id)->where('type', 'biased')->get();
+            $wrongAns = Answers::where('questionnaire_id', $question->id)->where('type', 'wrong')->get();
             $result[] = [
-                    'questionId' => $question->id,
-                    'question' => $question->question,
-                    'trueAns' => (!empty($trueAns[0])) ? $trueAns[0]->answer : '',
-                    'trueAnsId' => (!empty($trueAns[0])) ? $trueAns[0]->id : '',
-                    'biasedAns' => (!empty($biasedAns[0])) ? $biasedAns[0]->answer : '',
-                    'biasedAnsId' => (!empty($biasedAns[0])) ? $biasedAns[0]->id : '',
-                    'wrongAns1' => (!empty($wrongAns[0])) ? $wrongAns[0]->answer : '',
-                    'wrongAns1Id' => (!empty($wrongAns[0])) ? $wrongAns[0]->id : '',
-                    'wrongAns2' => (!empty($wrongAns[1])) ? $wrongAns[1]->answer : '',
-                    'wrongAns2Id' => (!empty($wrongAns[1])) ? $wrongAns[1]->id : '',
+                'questionId' => $question->id,
+                'question' => $question->question,
+                'trueAns' => (!empty($trueAns[0])) ? $trueAns[0]->answer : '',
+                'trueAnsId' => (!empty($trueAns[0])) ? $trueAns[0]->id : '',
+                'biasedAns' => (!empty($biasedAns[0])) ? $biasedAns[0]->answer : '',
+                'biasedAnsId' => (!empty($biasedAns[0])) ? $biasedAns[0]->id : '',
+                'wrongAns1' => (!empty($wrongAns[0])) ? $wrongAns[0]->answer : '',
+                'wrongAns1Id' => (!empty($wrongAns[0])) ? $wrongAns[0]->id : '',
+                'wrongAns2' => (!empty($wrongAns[1])) ? $wrongAns[1]->answer : '',
+                'wrongAns2Id' => (!empty($wrongAns[1])) ? $wrongAns[1]->id : '',
             ];
         }
         return view("panel.questionnaire.edit", compact('result'));
     }
 
     public function update($id, Request $request)
-    {   
+    {
         $validatedFields = Validator::make($request->all(), [
             'true_answer' => ['required', 'string', 'max:100'],
             'biased_answer' => ['required', 'string', 'max:100'],
@@ -118,9 +116,9 @@ class QuestionnaireController extends Controller
             'wrong_answer_2' => ['required', 'string', 'max:100'],
         ]);
         if ($validatedFields->fails()) {
-            \Session::flash('msgErr','Oops! Question was not updated, try again.' );
+            \Session::flash('msgErr', 'Oops! Question was not updated, try again.');
             return redirect()->back()->withErrors($validatedFields->errors())->withInput();
-        }else{
+        } else {
             $questionnaire = Questionnaire::getSingle($id);
             $questionnaire->question = $request->question;
             $questionnaire->save();

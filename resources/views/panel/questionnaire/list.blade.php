@@ -39,7 +39,7 @@
                                             <th scope="col">Question</th>
                                             <th scope="col">Correct Answer</th>
                                             <th scope="col">Biased Answer</th>
-                                            <th scope="col">Wrong Answer<s/th>
+                                            <th scope="col">Wrong Answer</th>
                                             <th scope="col">Creation Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
