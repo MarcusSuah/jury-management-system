@@ -34,7 +34,8 @@
                                                 <td>{{ $value['status'] }}</td>
                                                 <td>{{ $value['comment'] }}</td>
                                                 <td>{{ $value['score'] }}</td>
-                                                <td>{{ $value['created_at'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($value['created_at'])->format('l, d F, Y \\a\\t h:i A') }}
+                                                </td>
                                             </tr>
                                         @endforeach
 

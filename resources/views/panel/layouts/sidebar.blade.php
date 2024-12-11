@@ -83,6 +83,8 @@
                                 <li><a href="{{ url('panel/questionnaire') }}">View Quiz</a></li>
                                 <li><a href="{{ url('panel/quiz-assigment') }}">Assign Quiz To Juror</a></li>
                                 <li><a href="{{ url('panel/view/quiz-assigment') }}">View Quiz Assigment</a></li>
+                                <li><a href="{{ url('panel/view-pending-quiz') }}">Pending Quiz</a></li>
+                                <li><a href="{{ url('panel/quiz-records') }}">View Quiz Records</a></li>
                             </ul>
                         </li>
 
@@ -121,7 +123,7 @@
                                 <span>My Cases</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ url('/view-jury-cases/' . Auth::user()->id) }}">View Cases</a></li>
+                                <li><a href="{{ url('panel/view-jury-cases' . Auth::user()->id) }}">View Cases</a></li>
                             </ul>
                         </li>
 

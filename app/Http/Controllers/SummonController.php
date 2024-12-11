@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Gemini;
 use App\Models\Summon;
 use App\Mail\SummonMail;
@@ -71,7 +72,7 @@ class SummonController extends Controller
         $save->category = $request->category;
         $save->address = $request->address;
         $save->date = $request->date;
-        $save->message = (!empty($result->text())) ? base64_encode($result->text()) :'';
+        $save->message = (!empty($result->text())) ? base64_encode($result->text()) : '';
         $save->save();
 
         Mail::to($email)->send(new SummonMail($final_msg));

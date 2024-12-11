@@ -118,7 +118,7 @@ Route::middleware('auth')->group(function () {
     Route::post("panel/assignjury/add", [AssignJuryController::class, "insert"]);
     Route::get("panel/assignjury/list", [AssignJuryController::class, "list"]);
     // Juror cases
-    Route::get("view-jury-cases/{user_id}", [AssignJuryController::class, "viewCases"]);
+    Route::get("panel/view-jury-cases/{user_id}", [AssignJuryController::class, "viewCases"]);
 
     Route::get("panel/assignjudge/add", [AssignJudgeController::class, "add"]);
     Route::post("panel/assignjudge/add", [AssignJudgeController::class, "insert"]);

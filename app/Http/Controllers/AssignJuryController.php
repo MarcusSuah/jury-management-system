@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class AssignJuryController extends Controller
 {
@@ -87,6 +89,6 @@ class AssignJuryController extends Controller
             ->distinct('assign_juries.court_id')
             ->get();
 
-        return view("panel.jury.jury-assign-list", $data);
+        return view("panel.jury-assign-list", $data);
     }
 }

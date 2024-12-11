@@ -36,8 +36,10 @@
                                                     <td>{{ $value->Jury->name }}</td>
                                                     <td>{{ $value->Court->name }}</td>
                                                     <td>{{ $value->Case->case_no }}</td>
-                                                    <td>{{ $value->start_date }}</td>
-                                                    <td>{{ $value->end_date }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($value->start_date)->format('l, d F, Y ') }}
+                                                    </td>
+                                                    <td>{{ \Carbon\Carbon::parse($value->end_date)->format('l, d F, Y ') }}
+                                                    </td>
                                                     <td>
                                                         @if ($value->status == 0)
                                                             <a class="btn btn-sm btn-danger">Inactive</a>
@@ -64,7 +66,7 @@
                     </div>
                 </div>
 
-            </div> 
+            </div>
 
         </div>
 

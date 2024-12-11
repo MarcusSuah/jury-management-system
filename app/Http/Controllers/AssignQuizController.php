@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssignQuiz;
+use Carbon\Carbon;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\AssignJury;
-use App\Models\Questionnaire;
+use spatie\Permission;
 use App\Models\Answers;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use App\Models\AssignJury;
+use App\Models\AssignQuiz;
 use App\Models\QuizResult;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use App\Models\Questionnaire;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+
+
 
 class AssignQuizController extends Controller
 {

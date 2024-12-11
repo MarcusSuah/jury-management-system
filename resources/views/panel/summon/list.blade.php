@@ -53,7 +53,8 @@
                                                 <td>{{ $value->email }}</td>
                                                 <td>{{ $value->category }}</td>
                                                 <td>{{ $value->address }}</td>
-                                                <td>{{ $value->created_at }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($value->created_at)->format('l, d F, Y \\a\\t h:i A') }}
+                                                </td>
                                                 <td>
                                                     <a title="View Message" href="#"
                                                         class="btn btn-primary btn-sm viewMsg"><i

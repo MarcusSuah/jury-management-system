@@ -290,7 +290,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div> --}}`
                                 </div>
                                 <div class="card-body py-0 px-2">
                                     <div id="column_line_chart" class="apex-charts" dir="ltr"></div>

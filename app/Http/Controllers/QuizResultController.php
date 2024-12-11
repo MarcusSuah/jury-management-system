@@ -7,10 +7,12 @@ use App\Models\AssignQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class QuizResultController extends Controller
 {
-   /**
+    /**
      * Submit Juror Quiz Result
      */
     public function submitResult(Request $request)
@@ -25,7 +27,8 @@ class QuizResultController extends Controller
         $assignment->status = 'completed';
         $assignment->save();
 
-        echo json_encode(['msg' => 'success']); die;
+        echo json_encode(['msg' => 'success']);
+        die;
     }
 
     /**
@@ -35,14 +38,14 @@ class QuizResultController extends Controller
     {
         $assignments = AssignQuiz::where('user_id', Auth::user()->id)->get();
         $record = [];
-        if(!empty($assignments)){
-            foreach($assignments as $assignment){
+        if (!empty($assignments)) {
+            foreach ($assignments as $assignment) {
                 $result = QuizResult::where('assign_quiz_id', $assignment->id)->first();
                 $score = '-';
-                if(!empty($result)){
-                    $score = $result->score/10 * 100 .'%';
+                if (!empty($result)) {
+                    $score = $result->score / 10 * 100 . '%';
                 }
-                
+
                 $record[] = [
                     'exam_score' => $score,
                     'comment' => (!empty($result->status)) ? $result->status : '-',

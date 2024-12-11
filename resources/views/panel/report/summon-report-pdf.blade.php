@@ -73,7 +73,8 @@
                     <td>{{ $row['category'] }}</td>
                     <td>{{ $row['address'] }}</td>
                     <td>{{ $row['message'] }}</td>
-                    <td>{{ $row['date'] }}</td>
+                    <td>{{ \Carbon\Carbon::parse($row['date'])->format('l, d F, Y \\a\\t h:i A') }}
+                    </td>
                 </tr>
             @endforeach
         </tbody>

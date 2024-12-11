@@ -39,6 +39,8 @@
     <link href="{{ url('') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     @vite('resources/css/app.css')
 
+
+
 </head>
 
 <body data-topbar="dark">

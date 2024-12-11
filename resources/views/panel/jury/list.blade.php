@@ -121,18 +121,18 @@
                                         <table id="example" class="display nowrap" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    {{-- <th>ID</th> --}}
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>D.O.B</th>
+                                                    {{-- <th>D.O.B</th> --}}
                                                     <th>Gender</th>
                                                     <th>Contact</th>
                                                     <th>Address</th>
-                                                    <th>Occupation</th>
+                                                    {{-- <th>Occupation</th>
                                                     <th>Work Address</th>
-                                                    <th>Race</th>
+                                                    <th>Race</th> --}}
                                                     <th>Nationality</th>
-                                                    <th>Country</th>
+                                                    {{-- <th>Country</th> --}}
                                                     <th>City</th>
                                                     <th>District</th>
                                                     <th>Created At</th>
@@ -143,60 +143,58 @@
                                             <tbody class="col-sm ">
                                                 @foreach ($result as $value)
                                                     <tr>
-                                                        <th scope="row">{{ $value['id'] }}</th>
+                                                        {{-- <th scope="row">{{ $value['id'] }}</th> --}}
                                                         <td>{{ $value['name'] }}</td>
                                                         <td>{{ $value['email'] }}</td>
-                                                        <td>{{ $value['dob'] }}</td>
+                                                        {{-- <td>{{ $value['dob'] }}</td> --}}
                                                         <td>{{ $value['gender'] }}</td>
                                                         <td>{{ $value['contact'] }}</td>
                                                         <td>{{ $value['address'] }}</td>
-                                                        <td>{{ $value['occupation'] }}</td>
-                                                        <td>{{ $value['work_add'] }}</td>
-                                                        <td>{{ $value['race'] }}</td>
                                                         <td>{{ $value['nationality'] }}</td>
-                                                        <td>{{ $value['country'] }}</td>
+                                                        {{-- <td>{{ $value['country'] }}</td> --}}
                                                         <td>{{ $value['city'] }}</td>
                                                         <td>{{ $value['district'] }}</td>
-                                                        <td>{{ $value['created_at'] }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($value['created_at'])->format('l, d F, Y \\a\\t h:i A') }}
+                                                        </td>
                                                         <td>
-                                                            @if($value['status'] == '0')
+                                                            @if ($value['status'] == '0')
                                                                 <a class="btn-sm btn-warning">Pending</a>
                                                             @elseif($value['status'] == '1')
                                                                 <a class="btn-sm btn-success">Approved</a>
                                                             @elseif($value['status'] == '2')
-                                                            <a class="btn-sm btn-danger">Denied</a>
+                                                                <a class="btn-sm btn-danger">Denied</a>
                                                             @else
                                                                 <a class="btn-sm btn-danger">Disabled</a>
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            @if($value['approved'] != '' && $value['approved'] == 'no')
-                                                        <a href="{{ url('panel/jury/approve/' . $value['id']) }}"
-                                                            class="btn btn-primary btn-sm" title="Approve"><i
-                                                                class="fa-solid fa-check"></i></a>
-                                                        <a href="{{ url('panel/jury/deny/' . $value['id']) }}"
-                                                            class="btn btn-danger btn-sm" title="Deny"><i
-                                                                class="fa-solid fa-close"></i></a>
-                                                        @endif
+                                                            @if ($value['approved'] != '' && $value['approved'] == 'no')
+                                                                <a href="{{ url('panel/jury/approve/' . $value['id']) }}"
+                                                                    class="btn btn-primary btn-sm" title="Approve"><i
+                                                                        class="fa-solid fa-check"></i></a>
+                                                                <a href="{{ url('panel/jury/deny/' . $value['id']) }}"
+                                                                    class="btn btn-danger btn-sm" title="Deny"><i
+                                                                        class="fa-solid fa-close"></i></a>
+                                                            @endif
 
-                                                        <a href="{{ url('panel/jury/edit/' . $value['id']) }}"
-                                                            class="btn btn-success btn-sm" title="Edit"><i
-                                                                class="fa-solid fa-pen-to-square"></i></a>
+                                                            <a href="{{ url('panel/jury/edit/' . $value['id']) }}"
+                                                                class="btn btn-success btn-sm" title="Edit"><i
+                                                                    class="fa-solid fa-pen-to-square"></i></a>
 
-                                                        @if($value['role_status'] != '' && $value['role_status'] == 'yes')
-                                                            <a href="{{ url('panel/jury/disable/' . $value['id']) }}"
+                                                            @if ($value['role_status'] != '' && $value['role_status'] == 'yes')
+                                                                <a href="{{ url('panel/jury/disable/' . $value['id']) }}"
                                                                     class="btn btn-danger btn-sm" title="Disable"><i
                                                                         class="fa-solid fa-close"></i></a>
-                                                        @else
-                                                            <a href="{{ url('panel/jury/activate/' . $value['id']) }}"
-                                                            class="btn btn-primary btn-sm" title="Activate"><i
-                                                                class="fa-solid fa-check"></i></a>
-                                                        @endif
+                                                            @else
+                                                                <a href="{{ url('panel/jury/activate/' . $value['id']) }}"
+                                                                    class="btn btn-primary btn-sm" title="Activate"><i
+                                                                        class="fa-solid fa-check"></i></a>
+                                                            @endif
 
-                                                        <a href="{{ url('panel/jury/delete/' . $value['id']) }}"
-                                                            class="btn btn-danger btn-sm" title="Delete"><i
-                                                                class="bi bi-trash3-fill mr-4"><i
-                                                                    class="fa-solid fa-trash"></i></a>
+                                                            <a href="{{ url('panel/jury/delete/' . $value['id']) }}"
+                                                                class="btn btn-danger btn-sm" title="Delete"><i
+                                                                    class="bi bi-trash3-fill mr-4"><i
+                                                                        class="fa-solid fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -212,26 +210,7 @@
 
             </div>
             <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> © Jury Management System.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Designed <i class="mdi mdi-heart text-danger"></i> by Marcus
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
         </div>
-
 
 
     </section>
