@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\AccountReponseMail;
 use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
-
-
 
 class JurorController extends Controller
 {
@@ -30,6 +27,7 @@ class JurorController extends Controller
                     if (!empty($user)) {
                         $result[] = [
                             'id' => $user->id ?? '',
+                            'juror_id' => $data->id ?? '',
                             'name' => $data->name ?? '',
                             'race' => $data->race ?? '',
                             'gender' => $data->gender ?? '',
@@ -96,13 +94,18 @@ class JurorController extends Controller
             $save->district = $request->district;
             $save->save();
 
+            if (!empty($user->email)) {
+                $final_msg['body'] = "Dear $user->name, \n Thank you for applying for a Jury account. We'll review your application and notify you.";
+                Mail::to($user->email)->send(new AccountReponseMail($final_msg));
+            }
+
             return redirect()->back()->with("success", "Thank you for applying for a Jury account. We'll review your application and notify you.");
         }
     }
     public function edit($id)
     {
-        $data['getRecord'] = Juror::getSingle($id);
-        return view("panel.jury.edit", $data);
+        $data = Juror::getSingle($id);
+        return view("panel.jury.edit", compact('data'));
     }
 
     public function update($id, Request $request)
@@ -152,7 +155,7 @@ class JurorController extends Controller
                 $user->update();
 
                 if (!empty($user->email)) {
-                    $final_msg['body'] = "Dear $user->name, \n Please be informed that your Jury account has been approve. Kindly proceed to login with your registered credentials.";
+                    $final_msg['body'] = "Dear $user->name, \n Please be informed that your Jury account has been approved. Kindly proceed to login with your registered credentials.";
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 

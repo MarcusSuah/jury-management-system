@@ -24,7 +24,6 @@
     <!-- Template Stylesheet -->
     <link href="{{ url('') }}/assets/css/homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    @vite('resources/css/app.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {

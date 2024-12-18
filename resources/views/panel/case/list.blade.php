@@ -115,7 +115,7 @@
                             <p class="card-title-desc">Here are the list of Cases</p>
                             <div class="table-responsive col-sm">
                                 @include('_message')
-                                <table id="example" class="display wrap" style="width:100%">
+                                <table id="example" class="display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -135,11 +135,9 @@
                                                 <td>{{ $value->case_no }}</td>
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->case_type }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($value->court_date)->format('l, d F, Y ') }}
-                                                </td>
-                                                <td class="btn btn-primary btn-sm">{{ $value->status }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($value->created_at)->format('l, d F, Y ') }}
-                                                </td>
+                                                <td>{{ $value->court_date }}</td>
+                                                <td>{{ $value->status }}</td>
+                                                <td>{{ $value->created_at }}</td>
                                                 <td>
                                                     <a href="{{ url('panel/case/edit/' . $value->id) }}"
                                                         class="btn btn-success btn-sm"><i

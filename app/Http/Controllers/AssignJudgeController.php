@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignJudge;
+use App\Models\Judge;
+use App\Models\Court;
+use App\Models\CourtCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Carbon\Carbon;
-
 
 class AssignJudgeController extends Controller
 {
@@ -43,9 +44,9 @@ class AssignJudgeController extends Controller
             ]
         );
         $unique_entry = DB::table("assign_judges")
-            ->join('court_cases', 'court_cases.id', 'assign_judges.case_id')
-            ->Where('court_cases.status', '!=', 'Finished')
-            ->Where('court_cases.id', $request->case)
+            ->join('court_cases','court_cases.id','assign_judges.case_id')
+            ->Where('court_cases.status','!=', 'Finished')
+            ->Where('court_cases.id',$request->case)
             ->count();
         if ($unique_entry > 0) {
             return redirect()->back()->with("error", "The case is ongoing, Judge cannot be assigned.");
@@ -74,8 +75,7 @@ class AssignJudgeController extends Controller
         return view("panel.assignment.list-assign-judge", $data);
     }
 
-    public function viewCases($user_id)
-    {
+    public function viewCases($user_id){
         $data["getRecord"] = DB::table('assign_judges')
             ->join('judges', 'judges.id', '=', 'assign_judges.judge_id')
             ->join('courts', 'courts.id', '=', 'assign_judges.court_id')
@@ -85,5 +85,34 @@ class AssignJudgeController extends Controller
             ->get();
 
         return view("panel.judge.judge-assign-list", $data);
+    }
+
+    /**
+     * Display assignment edit form
+     */
+    public function edit($id) {
+        $data = AssignJudge::getSingle($id);
+        $assignedJudge = Judge::getSingle($data->juror_id);
+        $assignedCourt = Court::getSingle($data->court_id);
+        $assignedCase = CourtCase::getSingle($data->case_id);
+        $courts = DB::table("courts")->get();
+        $court_cases = DB::table("court_cases")->get();
+        $judges = DB::table("judges")->get();
+        return view("panel.assignment.edit-assign-judge", compact("courts", "court_cases", "judges","data","assignedJudge","assignedCourt","assignedCase"));
+    }
+
+    /**
+     * Update assignment
+     */
+    public function update(Request $request, $id) {
+        $assgn_judge = AssignJudge::getSingle($id);
+        $assgn_judge->judge_id = $request->judge;
+        $assgn_judge->court_id = $request->court;
+        $assgn_judge->case_id = $request->case;
+        $assgn_judge->case_start_date = $request->start_date;
+        $assgn_judge->case_end_date = $request->end_date;
+        $assgn_judge->case_status = (empty($request->status)) ? 0 : 1;
+        $assgn_judge->save();
+        return redirect('/panel/assignjudge/list')->with("success", "Juror assignment successfully updated");
     }
 }

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Jury|Management System | AI-Featured</title>
+    <title>Jury|Management System </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Jury Management SYstem" name="description" />
     <meta content="Jury Management SYstem" name="author" />
@@ -37,9 +37,6 @@
     <link href="{{ url('') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="{{ url('') }}/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-    @vite('resources/css/app.css')
-
-
 
 </head>
 

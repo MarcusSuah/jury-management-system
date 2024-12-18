@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignJury;
+use App\Models\Juror;
+use App\Models\Court;
+use App\Models\CourtCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-
 
 class AssignJuryController extends Controller
 {
@@ -89,6 +90,37 @@ class AssignJuryController extends Controller
             ->distinct('assign_juries.court_id')
             ->get();
 
-        return view("panel.jury-assign-list", $data);
+        return view("panel.jury.jury-assign-list", $data);
+    }
+
+    /**
+     * Display assignment edit form
+     */
+    public function edit($id)
+    {
+        $data = AssignJury::getSingle($id);
+        $assignedJury = Juror::getSingle($data->juror_id);
+        $assignedCourt = Court::getSingle($data->court_id);
+        $assignedCase = CourtCase::getSingle($data->case_id);
+        $courts = DB::table("courts")->get();
+        $court_cases = DB::table("court_cases")->get();
+        $jurors = DB::table("jurors")->get();
+        return view("panel.assignment.edit-assign-jury", compact("courts", "court_cases", "jurors", "data", "assignedJury", "assignedCourt", "assignedCase"));
+    }
+
+    /**
+     * Update assignment
+     */
+    public function update(Request $request, $id)
+    {
+        $assgn_jury = AssignJury::getSingle($id);
+        $assgn_jury->juror_id = $request->jury;
+        $assgn_jury->court_id = $request->court;
+        $assgn_jury->case_id = $request->case;
+        $assgn_jury->start_date = $request->start_date;
+        $assgn_jury->end_date = $request->end_date;
+        $assgn_jury->status = (empty($request->status)) ? 0 : 1;
+        $assgn_jury->save();
+        return redirect('/panel/assignjury/list')->with("success", "Juror assignment successfully updated");
     }
 }

@@ -17,11 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-
-    protected $table = "users";
-
     protected $fillable = [
         'name',
+        'status',
         'email',
         'password',
     ];
@@ -50,15 +48,6 @@ class User extends Authenticatable
     }
 
     static public function getAllUsers()
-    {
-        return User::get();
-    }
-    static public function getSingle($id)
-    {
-        return User::find($id);
-    }
-
-    static public function getRecord()
     {
         return User::get();
     }

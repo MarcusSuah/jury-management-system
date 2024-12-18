@@ -13,7 +13,7 @@
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Jury Admin</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Administrator</a></li>
                                         <li class="breadcrumb-item active">Dashboard</li>
                                     </ol>
                                 </div>
@@ -191,7 +191,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-6">
+                        <div class="col-xl-12">
 
                             <div class="card">
                                 <div class="card-body pb-0">
@@ -249,7 +249,7 @@
                         </div>
 
 
-                        <div class="col-xl-6">
+                        {{-- <div class="col-xl-6">
                             <div class="card">
                                 <div class="card-body pb-0">
                                     <div class="float-end d-none d-md-inline-block">
@@ -268,35 +268,35 @@
                                         </div>
                                     </div>
                                     <h4 class="card-title mb-4">Summons</h4>
-                                    {{--
-                                <div class="text-center pt-3">
-                                    <div class="row">
-                                        <div class="col-sm-4 mb-3 mb-sm-0">
-                                            <div>
-                                                <h5></h5>
-                                                <p class="text-muted text-truncate mb-0">This Week</p>
+
+                                    <div class="text-center pt-3">
+                                        <div class="row">
+                                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                                <div>
+                                                    <h5></h5>
+                                                    <p class="text-muted text-truncate mb-0">This Week</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-4 mb-3 mb-sm-0">
-                                            <div>
-                                                <h5>$44,960</h5>
-                                                <p class="text-muted text-truncate mb-0">Last Week</p>
+                                            <div class="col-sm-4 mb-3 mb-sm-0">
+                                                <div>
+                                                    <h5>$44,960</h5>
+                                                    <p class="text-muted text-truncate mb-0">Last Week</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div>
-                                                <h5>$29,142</h5>
-                                                <p class="text-muted text-truncate mb-0">Last Month</p>
+                                            <div class="col-sm-4">
+                                                <div>
+                                                    <h5>$29,142</h5>
+                                                    <p class="text-muted text-truncate mb-0">Last Month</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}`
                                 </div>
                                 <div class="card-body py-0 px-2">
                                     <div id="column_line_chart" class="apex-charts" dir="ltr"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 @endrole
@@ -374,7 +374,7 @@
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Jury Admin</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Administrator</a></li>
                                         <li class="breadcrumb-item active">Dashboard</li>
                                     </ol>
                                 </div>

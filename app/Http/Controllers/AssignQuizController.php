@@ -2,24 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\User;
-use spatie\Permission;
-use App\Models\Answers;
-use Illuminate\View\View;
-use App\Models\AssignJury;
 use App\Models\AssignQuiz;
-use App\Models\QuizResult;
-use Illuminate\Support\Arr;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Questionnaire;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
+use App\Models\AssignJury;
+use App\Models\Questionnaire;
+use App\Models\Answers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
-
-
+use App\Models\QuizResult;
 
 class AssignQuizController extends Controller
 {
@@ -127,6 +118,7 @@ class AssignQuizController extends Controller
     {
         $quiz = AssignQuiz::getSingle($request->assignment_id);
         $quiz->status = 'attempted';
+        $quiz->updated_at = date('Y-m-d H:i:s');
         $quiz->save();
         //return redirect("panel/start-quiz");
         return view("panel.questionnaire.quiz");
@@ -145,13 +137,13 @@ class AssignQuizController extends Controller
      */
     public function getQuiz()
     {
-        $questions = DB::table('questionnaires')->limit(10)->get();
+        $questions = DB::table('questionnaires')->limit(10)->inRandomOrder()->get();
         $assignment = AssignQuiz::where('user_id', Auth::user()->id)->where('status', 'attempted')->latest('id')->first();
         $result = [];
         if (!empty($questions) && !empty($assignment)) {
             foreach ($questions as $question) {
                 $ans = [];
-                $answers = Answers::where('questionnaire_id', $question->id)->get();
+                $answers = Answers::where('questionnaire_id', $question->id)->inRandomOrder()->get();
                 if (!empty($answers)) {
                     foreach ($answers as $answer) {
                         if ($answer->type == 'true') {
@@ -163,6 +155,7 @@ class AssignQuizController extends Controller
                         }
                     }
                 }
+                //shuffle($ans);
                 $result[] = [
                     'question' => $question->question,
                     'answers' => $ans,

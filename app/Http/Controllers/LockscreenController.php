@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LockscreenController extends Controller
 {
-  
+
     public function lockscreen()
     {
         return view("panel.lockscreen");

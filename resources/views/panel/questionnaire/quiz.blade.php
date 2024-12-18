@@ -73,25 +73,39 @@
             const $questionContainer = $('#question-container');
 
             if (question) {
-                let answersHtml = `
-                <h4>${question.question}</h4>
-                <div>
-                    <label>
-                        <input type="radio" name="answer" value="true"> ${question.answers.true}
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="answer" value="biased"> ${question.answers.biased}
-                    </label>
-                </div>
-            `;
+                let allAnswers = [];
+
+                if (question.answers.true) {
+                    allAnswers.push({
+                        type: 'true',
+                        text: question.answers.true
+                    });
+                }
+
+                if (question.answers.biased) {
+                    allAnswers.push({
+                        type: 'biased',
+                        text: question.answers.biased
+                    });
+                }
 
                 question.answers.wrong.forEach((wrongAnswer, i) => {
+                    allAnswers.push({
+                        type: `wrong-${i}`,
+                        text: wrongAnswer
+                    });
+                });
+
+                // Shuffle the answers
+                allAnswers = allAnswers.sort(() => Math.random() - 0.5);
+
+                // Generate the HTML dynamically
+                let answersHtml = `<h4>${question.question}</h4>`;
+                allAnswers.forEach(answer => {
                     answersHtml += `
                     <div>
                         <label>
-                            <input type="radio" name="answer" value="wrong-${i}"> ${wrongAnswer}
+                            <input type="radio" name="answer" value="${answer.type}"> ${answer.text}
                         </label>
                     </div>
                 `;

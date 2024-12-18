@@ -24,7 +24,6 @@
     <!-- Template Stylesheet -->
     <link href="{{ url('') }}/assets/css/homepage.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    @vite('resources/css/app.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         body {
@@ -162,7 +161,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="{{ url('/') }}" class="nav-item nav-link active">Home</a>
+                        <a href="#home" class="nav-item nav-link active">Home</a>
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#service" class="nav-item nav-link">Services</a>
                         <a href="{{ route('ai-chatbot') }}" class="nav-item nav-link">AI Chatbot</a>

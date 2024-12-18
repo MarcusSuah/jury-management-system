@@ -13,24 +13,21 @@
                                 <table id="example" class="display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Name</th>
                                             <th scope="col">Score</th>
                                             <th scope="col">Comment</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Start Date & time</th>
-                                            <th scope="col">End Date & time</th>
+                                            <!-- <th scope="col">End Date & time</th> -->
                                         </tr>
                                     </thead>
                                     <tbody class="col-sm ">
                                         @foreach ($record as $value)
                                             <tr>
-                                                <td scope="row">{{ $value['name'] }}</td>
-                                                <td>{{ $value['email'] }}</td>
-                                                <td>{{ $value['status'] }}</td>
+                                                <td>{{ $value['exam_score'] }}</td>
                                                 <td>{{ $value['comment'] }}</td>
-                                                <td>{{ $value['score'] }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($value['created_at'])->format('l, d F, Y \\a\\t h:i A') }}
-                                                </td>
+                                                <td>{{ $value['status'] }}</td>
+                                                <td>{{ $value['start_time'] }}</td>
+                                                <!-- <td>{{ $value['end_time'] }}</td> -->
                                             </tr>
                                         @endforeach
 

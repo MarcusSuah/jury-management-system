@@ -12,7 +12,7 @@
                                 <h4 class="card-title mb-4">Assignment List</h4>
                                 <div class="table-responsive col-sm">
                                     @include('_message')
-                                    <table id="example" class="display wrap" style="width:100%">
+                                    <table id="example" class="display nowrap" style="width:100%">
                                         <thead>
                                             <tr class="fs-6 fw-normal font-monospace">
                                                 <th>ID</th>
@@ -35,10 +35,8 @@
                                                     <td>{{ $value->type }}</td>
                                                     <td>{{ $value->category }}</td>
                                                     <td>{{ $value->case_no }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($value->case_start_date)->format('l, d F, Y \\a\\t h:i A') }}
-                                                    </td>
-                                                    <td>{{ \Carbon\Carbon::parse($value->case_end_date)->format('l, d F, Y \\a\\t h:i A') }}
-                                                    </td>
+                                                    <td>{{ $value->case_start_date }}</td>
+                                                    <td>{{ $value->case_end_date }}</td>
                                                     <td>
                                                         @if ($value->case_status == 0)
                                                             <a class="btn btn-sm btn-danger">Inactive</a>

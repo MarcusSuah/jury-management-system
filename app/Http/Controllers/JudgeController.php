@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\AccountReponseMail;
 use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
-
 
 class JudgeController extends Controller
 {
@@ -30,6 +28,7 @@ class JudgeController extends Controller
                 if (!empty($user)) {
                     $result[] = [
                         'id' => $user->id ?? '',
+                        'judge_id' => $data->id ?? '',
                         'name' => $data->name ?? '',
                         'gender' => $data->gender ?? '',
                         'dob' => $data->dob ?? '',
@@ -85,6 +84,14 @@ class JudgeController extends Controller
             $save->yr_exp = $request->yr_exp;
             $save->save();
 
+            if (!empty($user->email)) {
+                $final_msg['body'] = "Dear $user->name, \n Thank you for applying for a Judge account. We'll review your application and notify you.";
+                try {
+                    Mail::to($user->email)->send(new AccountReponseMail($final_msg));
+                } catch (Exception $e) {
+                }
+            }
+
             return redirect()->back()->with("success", "Thank you for applying for a Judge account. We'll review your application and notify you.");
         }
     }
@@ -139,7 +146,7 @@ class JudgeController extends Controller
                 $user->update();
 
                 if (!empty($user->email)) {
-                    $final_msg['body'] = "Dear $user->name, \n Please be informed that your Judge account has been approve. Kindly proceed to login with your registered credentials.";
+                    $final_msg['body'] = "Dear $user->name, \n Please be informed that your Judge account has been approved. Kindly proceed to login with your registered credentials.";
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 

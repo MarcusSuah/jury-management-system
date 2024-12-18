@@ -39,9 +39,14 @@
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Gender</th>
+                                                <th>DOB</th>
+                                                <th>Nationality</th>
+                                                <th>City</th>
                                                 <th>Email</th>
                                                 <th>Contact</th>
                                                 <th>Address</th>
+                                                <th>Position</th>
+                                                <th>Year of Exp.</th>
                                                 <th>Creation Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -50,46 +55,50 @@
                                         <tbody class="col-sm ">
                                             @foreach ($result as $value)
                                                 <tr>
-                                                    <th scope="row">{{ $value['id'] }}</th>
+                                                    <th scope="row">{{ $value['judge_id'] }}</th>
                                                     <td>{{ $value['name'] }}</td>
                                                     <td>{{ $value['gender'] }}</td>
+                                                    <td>{{ $value['dob'] }}</td>
+                                                    <td>{{ $value['country'] }}</td>
+                                                    <td>{{ $value['city'] }}</td>
                                                     <td>{{ $value['email'] }}</td>
                                                     <td>{{ $value['contact'] }}</td>
                                                     <td>{{ $value['address'] }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($value['created_at'])->format('l, d F, Y \\a\\t h:i A') }}
-                                                    </td>
+                                                    <td>{{ $value['specialization'] }}</td>
+                                                    <td>{{ $value['yr_exp'] }}</td>
+                                                    <td>{{ $value['created_at'] }}</td>
                                                     <td>
-                                                        @if ($value['status'] == '0')
-                                                            <a class="btn-sm btn-warning">Pending</a>
-                                                        @elseif($value['status'] == '1')
-                                                            <a class="btn-sm btn-success">Approved</a>
-                                                        @elseif($value['status'] == '2')
+                                                        @if($value['status'] == '0')
+                                                                <a class="btn-sm btn-warning">Pending</a>
+                                                            @elseif($value['status'] == '1')
+                                                                <a class="btn-sm btn-success">Approved</a>
+                                                            @elseif($value['status'] == '2')
                                                             <a class="btn-sm btn-danger">Denied</a>
-                                                        @else
-                                                            <a class="btn-sm btn-danger">Disabled</a>
-                                                        @endif
+                                                            @else
+                                                                <a class="btn-sm btn-danger">Disabled</a>
+                                                            @endif
                                                     </td>
                                                     <td>
-                                                        @if ($value['approved'] != '' && $value['approved'] == 'no')
-                                                            <a href="{{ url('panel/judge/approve/' . $value['id']) }}"
-                                                                class="btn btn-primary btn-sm" title="Approve"><i
-                                                                    class="fa-solid fa-check"></i></a>
-                                                            <a href="{{ url('panel/judge/deny/' . $value['id']) }}"
-                                                                class="btn btn-danger btn-sm" title="Deny"><i
-                                                                    class="fa-solid fa-close"></i></a>
+                                                        @if($value['approved'] != '' && $value['approved'] == 'no')
+                                                        <a href="{{ url('panel/judge/approve/' . $value['id']) }}"
+                                                            class="btn btn-primary btn-sm" title="Approve"><i
+                                                                class="fa-solid fa-check"></i></a>
+                                                        <a href="{{ url('panel/judge/deny/' . $value['id']) }}"
+                                                            class="btn btn-danger btn-sm" title="Deny"><i
+                                                                class="fa-solid fa-close"></i></a>
                                                         @endif
-                                                        <a href="{{ url('panel/judge/edit/' . $value['id']) }}"
+                                                        <a href="{{ url('panel/judge/edit/' . $value['judge_id']) }}"
                                                             class="btn btn-success btn-sm" title="Edit"><i
                                                                 class="fa-solid fa-pen-to-square"></i></a>
 
-                                                        @if ($value['role_status'] != '' && $value['role_status'] == 'yes')
+                                                        @if($value['role_status'] != '' && $value['role_status'] == 'yes')
                                                             <a href="{{ url('panel/judge/disable/' . $value['id']) }}"
-                                                                class="btn btn-danger btn-sm" title="Disable"><i
-                                                                    class="fa-solid fa-close"></i></a>
+                                                                    class="btn btn-danger btn-sm" title="Disable"><i
+                                                                        class="fa-solid fa-close"></i></a>
                                                         @else
                                                             <a href="{{ url('panel/judge/activate/' . $value['id']) }}"
-                                                                class="btn btn-primary btn-sm" title="Activate"><i
-                                                                    class="fa-solid fa-check"></i></a>
+                                                            class="btn btn-primary btn-sm" title="Activate"><i
+                                                                class="fa-solid fa-check"></i></a>
                                                         @endif
 
                                                         <a href="{{ url('panel/judge/delete/' . $value['id']) }}"
@@ -135,7 +144,8 @@
                 </div>
 
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">

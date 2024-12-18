@@ -59,7 +59,7 @@
                                 </span>
                             @endif
                         </div>
-            
+
                         <div class="col-md-12">
                             <label for="inputState" class="form-label">Cases</label>
                             <select id="inputState" class="form-select" name="case">
@@ -90,8 +90,8 @@
                         </div>
                         <div class="col-md-12">
                             <label for="start_date" class="form-label">Start Date</label>
-                            <input type="date" class="form-control no-past-day" name="start_date" value="{{ old('start_date') }}"
-                                required>
+                            <input type="date" class="form-control no-past-day" name="start_date"
+                                value="{{ old('start_date') }}" required>
                             @if ($errors->has('start_date'))
                                 <span class="help-block">
                                     <strong>
@@ -102,8 +102,8 @@
                         </div>
                         <div class="col-md-12">
                             <label for="end_date" class="form-label">End Date</label>
-                            <input type="date" class="form-control no-past-day" name="end_date" value="{{ old('end_date') }}"
-                                required>
+                            <input type="date" class="form-control no-past-day" name="end_date"
+                                value="{{ old('end_date') }}" required>
                             @if ($errors->has('end_date'))
                                 <span class="help-block">
                                     <strong>

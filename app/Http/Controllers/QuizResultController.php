@@ -7,8 +7,6 @@ use App\Models\AssignQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-
 
 class QuizResultController extends Controller
 {
@@ -24,8 +22,11 @@ class QuizResultController extends Controller
         $result->save();
 
         $assignment = AssignQuiz::getSingle($request->assignmentID);
+        $attempted_updated_time = $assignment->updated_at;
+
         $assignment->status = 'completed';
-        $assignment->save();
+        $assignment->updated_at = $attempted_updated_time;
+        $assignment->update();
 
         echo json_encode(['msg' => 'success']);
         die;
@@ -36,65 +37,29 @@ class QuizResultController extends Controller
      */
     public function quizRecords()
     {
-        $assignments = AssignQuiz::where('user_id', Auth::user()->id)->get();
-        $record = [];
-        if (!empty($assignments)) {
-            foreach ($assignments as $assignment) {
-                $result = QuizResult::where('assign_quiz_id', $assignment->id)->first();
-                $score = '-';
-                if (!empty($result)) {
-                    $score = $result->score / 10 * 100 . '%';
+        if (Auth::user()->hasRole('jury')) {
+            $assignments = AssignQuiz::where('user_id', Auth::user()->id)->get();
+            $record = [];
+            if (!empty($assignments)) {
+                foreach ($assignments as $assignment) {
+                    $result = QuizResult::where('assign_quiz_id', $assignment->id)->first();
+                    $score = '-';
+                    if (!empty($result)) {
+                        $score = $result->score / 10 * 100 . '%';
+                    }
+
+                    $record[] = [
+                        'exam_score' => $score,
+                        'comment' => (!empty($result->status)) ? $result->status : '-',
+                        'status' => (!empty($assignment->status)) ? $assignment->status : '-',
+                        'start_time' => (!empty($assignment)) ? $assignment->updated_at : '-',
+                        'end_time' => (!empty($result->created_at)) ? $result->created_at : '-',
+                    ];
                 }
-
-                $record[] = [
-                    'exam_score' => $score,
-                    'comment' => (!empty($result->status)) ? $result->status : '-',
-                    'status' => (!empty($assignment->status)) ? $assignment->status : '-',
-                    'start_time' => (!empty($result)) ? $assignment->updated_at : '-',
-                    'end_time' => (!empty($result->created_at)) ? $result->created_at : '-',
-                ];
             }
+            return view('panel.questionnaire.quiz-records', compact('record'));
+        } else {
+            abort(403, 'Unauthorized access.');
         }
-        return view('panel.questionnaire.quiz-records', compact('record'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(QuizResult $quizResult)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(QuizResult $quizResult)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, QuizResult $quizResult)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(QuizResult $quizResult)
-    {
-        //
     }
 }

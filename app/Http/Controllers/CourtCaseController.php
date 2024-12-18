@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\CourtCase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-
 
 class CourtCaseController extends Controller
 {
@@ -17,7 +15,7 @@ class CourtCaseController extends Controller
         $pending_case = CourtCase::where('status', 'Pending')->count();
         $ongoing_case = CourtCase::where('status', 'Ongoing')->count();
         $important_case = CourtCase::where('status', 'Important')->count();
-        return view("panel.case.list", $data, compact('finished_case', 'pending_case', 'ongoing_case', 'important_case'));
+        return view("panel.case.list", $data, compact('finished_case','pending_case','ongoing_case','important_case'));
     }
     public function add()
     {

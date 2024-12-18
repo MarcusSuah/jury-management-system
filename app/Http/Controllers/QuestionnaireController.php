@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Questionnaire;
 use App\Models\Answers;
 use Illuminate\Support\Facades\Validator;
-use Carbon\Carbon;
-
 
 class QuestionnaireController extends Controller
 {
@@ -82,7 +80,7 @@ class QuestionnaireController extends Controller
             $wringAnswer2->answer = $request->wrong_answer_2;
             $wringAnswer2->save();
 
-            return redirect("panel/questionnaire")->with("success", "Quiz successfully created");
+            return redirect("panel/questionnaire")->with("success", "Questionnaire successfully created");
         }
     }
     public function edit($id)
@@ -145,7 +143,7 @@ class QuestionnaireController extends Controller
             $wringAnswer2->answer = $request->wrong_answer_2;
             $wringAnswer2->save();
 
-            return redirect("panel/questionnaire")->with("success", "Quiz updated successfully ");
+            return redirect("panel/questionnaire")->with("success", "Questionnaire updated successfully ");
         }
     }
     public function delete($id)

@@ -1,4 +1,4 @@
-{{-- @extends('panel.layouts.app')
+@extends('panel.layouts.app')
 @section('content')
     <div class="container">
         <div class="row g-3 justify-content-center">
@@ -62,4 +62,4 @@
             </div>
         </div>
     </div>
-@endsection --}}
+@endsection

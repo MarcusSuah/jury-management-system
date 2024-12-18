@@ -17,10 +17,18 @@
 
                         <div class="col-md-12">
                             <label for="inputState" class="form-label">Court Gender</label>
-                            <select id="inputState" class="form-select" name="gender" value="{{ $getRecord->gender }}">
-                                <option selected disabled>Select Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
+                            <select id="inputState" class="form-select" name="gender">
+                                @if ($getRecord->gender == 'Male')
+                                    <option value="{{ $getRecord->gender }}" selected>Male</option>
+                                    <option value="Female">Female</option>
+                                @elseif($getRecord->gender == 'Female')
+                                    <option value="{{ $getRecord->gender }}" selected>Female</option>
+                                    <option value="Male">Male</option>
+                                @else
+                                    <option value="" selected>Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                @endif
                             </select>
                         </div>
                         <div class="mb-3">

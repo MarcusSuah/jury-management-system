@@ -117,12 +117,19 @@ Route::middleware('auth')->group(function () {
     Route::get("panel/assignjury/add", [AssignJuryController::class, "add"]);
     Route::post("panel/assignjury/add", [AssignJuryController::class, "insert"]);
     Route::get("panel/assignjury/list", [AssignJuryController::class, "list"]);
-    // Juror cases
-    Route::get("panel/view-jury-cases/{user_id}", [AssignJuryController::class, "viewCases"]);
+    Route::get("panel/assignjury/edit/{id}", [AssignJuryController::class, "edit"]);
+    Route::post("panel/assignjury/edit/{id}", [AssignJuryController::class, "update"]);
 
+    // Juror cases
+    Route::get("view-jury-cases/{user_id}", [AssignJuryController::class, "viewCases"]);
+
+    // Assign Judge
     Route::get("panel/assignjudge/add", [AssignJudgeController::class, "add"]);
     Route::post("panel/assignjudge/add", [AssignJudgeController::class, "insert"]);
     Route::get("panel/assignjudge/list", [AssignJudgeController::class, "list"]);
+    Route::get("panel/assignjudge/edit/{id}", [AssignJudgeController::class, "edit"]);
+    Route::post("panel/assignjudge/edit/{id}", [AssignJudgeController::class, "update"]);
+
     // Judge cases
     Route::get("view-judge-cases/{user_id}", [AssignJudgeController::class, "viewCases"]);
 
@@ -137,6 +144,14 @@ Route::middleware('auth')->group(function () {
     // Summon Report Routes
     Route::get("summon-report", [ReportController::class, "summonReport"]);
     Route::post("generate-summon-report", [ReportController::class, "generateSummonReport"])->name('generate-summon-report');
+
+    // Jury Report
+    Route::get("jury-report", [ReportController::class, "juryReport"]);
+    Route::post("generate-jury-report", [ReportController::class, "generateJuryReport"])->name('generate-jury-report');
+
+    // Judge Report
+    Route::get("judge-report", [ReportController::class, "judgeReport"]);
+    Route::post("generate-judge-report", [ReportController::class, "generateJudgeReport"])->name('generate-judge-report');
 });
 
 // Register Judge

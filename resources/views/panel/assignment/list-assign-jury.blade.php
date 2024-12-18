@@ -36,10 +36,8 @@
                                                     <td>{{ $value->Jury->name }}</td>
                                                     <td>{{ $value->Court->name }}</td>
                                                     <td>{{ $value->Case->case_no }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($value->start_date)->format('l, d F, Y ') }}
-                                                    </td>
-                                                    <td>{{ \Carbon\Carbon::parse($value->end_date)->format('l, d F, Y ') }}
-                                                    </td>
+                                                    <td>{{ $value->start_date }}</td>
+                                                    <td>{{ $value->end_date }}</td>
                                                     <td>
                                                         @if ($value->status == 0)
                                                             <a class="btn btn-sm btn-danger">Inactive</a>
@@ -48,10 +46,10 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <a href="{{ url('panel/jury/edit/' . $value->id) }}"
+                                                        <a href="{{ url('panel/assignjury/edit/' . $value->id) }}"
                                                             class="btn btn-success btn-sm"><i
                                                                 class="fa-solid fa-pen-to-square"></i>Edit</a>
-                                                        <a href="{{ url('panel/jury/delete/' . $value->id) }}"
+                                                        <a href="{{ url('panel/assignjury/delete/' . $value->id) }}"
                                                             class="btn btn-danger btn-sm"><i
                                                                 class="bi bi-trash3-fill mr-4"><i
                                                                     class="fa-solid fa-trash"></i>Delete</a>

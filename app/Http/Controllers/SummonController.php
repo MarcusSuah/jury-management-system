@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Gemini;
 use App\Models\Summon;
 use App\Mail\SummonMail;
@@ -64,7 +63,13 @@ class SummonController extends Controller
         $api_key = getenv("GEMINI_API_KEY");
         $client = Gemini::client($api_key);
         $result = $client->geminiPro()->generateContent($msg);
-        $final_msg = ['body' => $result->text()];
+        $mail = $result->text();
+
+        // Include base URL in the summon mail
+        $baseUrl = request()->getSchemeAndHttpHost();
+        $mail .= ' Kindly proceed to the website: ';
+        $mail .= $baseUrl;
+        $final_msg = ['body' => $mail];
 
         $save = new Summon;
         $save->name = $request->name;
@@ -94,6 +99,7 @@ class SummonController extends Controller
         $save->save();
         return redirect("panel/summon")->with("success", "Summon updated successfully ");
     }
+
     public function delete($id)
     {
         $save = Summon::getSingle($id);
