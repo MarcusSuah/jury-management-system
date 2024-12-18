@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Gemini;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Gemini;
 
 class HomepageController extends Controller
 {

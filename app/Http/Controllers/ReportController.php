@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SummonMail;
-use App\Models\Summon;
-use App\Models\User;
 use PDF;
 use Gemini;
+use App\Models\User;
+use App\Models\Summon;
+use App\Mail\SummonMail;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;

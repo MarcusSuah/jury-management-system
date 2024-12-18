@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class AssignQuiz extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
     protected $table = 'assign_quizzes';
 
     static public function getSingle($id)
