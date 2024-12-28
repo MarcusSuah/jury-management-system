@@ -32,6 +32,11 @@ Route::get("logout", [AuthController::class, "logout"])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get("panel/dashboard", [DashboardController::class, "dashboard"]);
     Route::get("panel/user", [UserController::class, "list"]);
+    Route::get("panel/user/add", [UserController::class, "add"]);
+    Route::get("panel/user/add", [UserController::class, "insert"]);
+    Route::get("panel/user/edit/{id}", [UserController::class, "edit"]);
+    Route::get("panel/user/edit/{id}", [UserController::class, "update"]);
+    Route::get("panel/user/delete/{id}", [UserController::class, "delete"]);
     Route::post("panel.lockscreen", [LockscreenController::class, 'lockscreen']);
 
     // Role ROutes

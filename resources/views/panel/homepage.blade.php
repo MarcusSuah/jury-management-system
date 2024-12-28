@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Jury Management System | AI-Featured</title>
+    <title>Jury Management System | AI-Powered</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -160,7 +160,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
                 <a href="#" class="navbar-brand">
-                    <h1 class="text-white">JSMS<span class="text-dark">|</span>AI-Featured</h1>
+                    <h1 class="text-white">JSMS<span class="text-dark">|</span>AI-Powered</h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
                     data-bs-target="#navbarCollapse">
@@ -202,7 +202,7 @@
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
                     <div class="btn btn-sm border rounded-pill text-white px-3 mb-3 animated slideInRight">JMS</div>
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">Welcome to the Future of Jury
+                    <h1 class="display-4 text-primary mb-4 animated slideInRight">Welcome to the Future of Jury
                         Management.</h1>
                     <p class="text-white mb-4 animated slideInRight fs-4 text-justify">Experience the next generation of
                         jury management with our cutting-edge AI technologies, designed to streamline and optimize every
@@ -295,7 +295,8 @@
                 <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
                     <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3 fs-3">Our Services</div>
                     <h1 class="mb-4">Our Excellent AI Solutions for Jury Selection</h1>
-                    <p class="mb-4 text-dark">The AI Jury Selection Management System has revolutionized our jury
+                    <p class="mb-4 text-dark">The AI-Powered Jury Selection Management System has revolutionized our
+                        jury
                         selection
                         process. The
                         efficiency and accuracy are unparalleled.</p>
@@ -339,10 +340,11 @@
                                     <div
                                         class="service-item d-flex flex-column justify-content-center text-center rounded">
                                         <div class="service-icon btn-square">
-                                            <i class="fa fa-brain fa-4x"></i>
+                                            <i class="fa-solid fa-scale-balanced fa-4x"></i>
                                         </div>
-                                        <h5 class="mb-3">Natural Language Processing</h5>
-                                        <p>Utilize NLP to understand and process juror information efficiently.</p>
+                                        <h5 class="mb-3">Automated Juror assessment </h5>
+                                        <p>The system promises to revolutionize jury selection, making it fairer,
+                                            faster, and more transparent..</p>
                                         <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
                                     </div>
                                 </div>
@@ -656,7 +658,7 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <a href="#" class="d-inline-block mb-3">
-                        <h3 class="text-white">JMS<span class="text-primary">|</span>AI-Enabled</h3>
+                        <h3 class="text-white">JMS<span class="text-primary">|</span>AI-Powered</h3>
                     </a>
                     <p class="mb-0">Using different forms of AI such as machine learning and natural language
                         processing (NLP), these tools can sift through voluminous data on social media platforms,
@@ -685,27 +687,26 @@
                     <a class="btn btn-link" href="contact">Contact Us</a>
                     <a class="btn btn-link" href="">Privacy Policy</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <h5 class="text-white mb-4">Our Services</h5>
+                {{-- <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
+                    <h5 class="text-white mb-4">Future Services</h5>
                     <a class="btn btn-link" href="">Robotic Automation</a>
                     <a class="btn btn-link" href="">Machine learning</a>
                     <a class="btn btn-link" href="">Predictive Analysis</a>
                     <a class="btn btn-link" href="">Data Science</a>
                     <a class="btn btn-link" href="">Robot Technology</a>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="container wow fadeIn" data-wow-delay="0.1s">
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Jury Selection Management System </a>,
-                        AI-Enabled.
+                        &copy; 2024 <a class="text-white" href="#">Jury Selection Management System
+                            AI-Powered.</a>
 
-                        Designed By : <a class="border-bottom" href="#">S. Marcus Suah</a> Computing Information
-                        Science Student <a class="border-bottom" href="#">UNILAK</a>
+                        Designed By : <a class="text-white" href="#">S. Marcus Suah</a> Computing Information
+                        Science Student <a class="text-white" href="#">UNILAK</a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

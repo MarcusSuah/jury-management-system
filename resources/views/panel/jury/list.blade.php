@@ -135,7 +135,7 @@
                                                     <th>Country</th>
                                                     <th>City</th>
                                                     <th>District</th>
-                                                    <th>Created At</th>
+                                                    {{-- <th>Created At</th> --}}
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -157,7 +157,7 @@
                                                         <td>{{ $value['country'] }}</td>
                                                         <td>{{ $value['city'] }}</td>
                                                         <td>{{ $value['district'] }}</td>
-                                                        <td>{{ $value['created_at'] }}</td>
+                                                        {{-- <td>{{ $value['created_at'] }}</td> --}}
                                                         <td>
                                                             @if ($value['status'] == '0')
                                                                 <a class="btn-sm btn-warning">Pending</a>
@@ -212,24 +212,6 @@
 
             </div>
             <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script> © Jury Management System.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Designed <i class="mdi mdi-heart text-danger"></i> by Marcus
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
         </div>
 
 

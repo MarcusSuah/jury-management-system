@@ -115,56 +115,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- View Modal -->
-                <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="viewModalLabel">View Judge Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Judge details will be populated here -->
-                                <h4>John Doe</h4>
-                                <p><strong>Date of Birth:</strong> 1970-05-15</p>
-                                <p><strong>Email:</strong> john.doe@example.com</p>
-                                <p><strong>Phone:</strong> (555) 123-4567</p>
-                                <p><strong>Address:</strong> 123 Main St, Anytown, USA 12345</p>
-                                <p><strong>Specialization:</strong> Criminal Law</p>
-                                <p><strong>Years of Experience:</strong> 15</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Edit Modal -->
-                <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Judge</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <!-- Add form fields similar to the add_judge.html form -->
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

@@ -21,12 +21,10 @@
                                             <tr class="fs-6 fw-normal font-monospace">
                                                 <th>ID</th>
                                                 <th>JUDGE NAME</th>
-                                                <th>JUDGE EMAIL</th>
                                                 <th>JUDGE POSITION</th>
                                                 <th>COURT NAME</th>
                                                 <th>COURT LOCATION</th>
                                                 <th>COURT TYPE</th>
-                                                <th>COURT CATEGORY</th>
                                                 <th>ASSIGNED CASE</th>
                                                 <th>CASE START DATE</th>
                                                 <th>CASE END DATE</th>
@@ -39,12 +37,10 @@
                                                 <tr>
                                                     <th scope="row">{{ $value->id }}</th>
                                                     <td>{{ $value->Judge->name }}</td>
-                                                    <td>{{ $value->Judge->email }}</td>
                                                     <td>{{ $value->Judge->specialization }}</td>
                                                     <td>{{ $value->Court->name }}</td>
                                                     <td>{{ $value->Court->location }}</td>
                                                     <td>{{ $value->Court->type }}</td>
-                                                    <td>{{ $value->Court->category }}</td>
                                                     <td>{{ $value->Case->case_no }}</td>
                                                     <td>{{ $value->case_start_date }}</td>
                                                     <td>{{ $value->case_end_date }}</td>
@@ -78,24 +74,6 @@
 
         </div>
         <!-- End Page-content -->
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> © Jury Management System.
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="text-sm-end d-none d-sm-block">
-                            Designed <i class="mdi mdi-heart text-danger"></i> by Marcus
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
         </div>
 
 

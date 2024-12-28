@@ -24,10 +24,6 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="card">
-                        <a href="{{ url('panel/user/add') }}" class="mt-4" style="margin-right: 30px">
-                            <button class="btn btn-primary float-lg-end">Add New
-                                User</button>
-                        </a>
                         <div class="card-body">
                             <h5 class="card-title">User Table</h5>
                             <div class="table-responsive col-sm">
@@ -51,12 +47,9 @@
                                                 <td>{{ \Carbon\Carbon::parse($value->created_at)->format('l, d F, Y ') }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('panel/user/edit/' . $value->id) }}"
-                                                        class="btn btn-success btn-sm"><i
-                                                            class="bi bi-pencil-square mr-4">Edit</i></a>
                                                     <a href="{{ url('panel/user/delete/' . $value->id) }}"
                                                         class="btn btn-danger btn-sm"><i
-                                                            class="bi bi-trash3-fill mr-4">Delete</i></a>
+                                                            class="fa fa-trash"> Delete</i></a>
 
                                                 </td>
                                             </tr>
