@@ -14,7 +14,7 @@
                             <input type="text" class="form-control" name="name" placeholder="enter court name">
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputEmail" class="form-label">Court Type</label>
                             <select id="inputType" class="form-select" name="type">
                                 <option selected disabled>Select Court Type</option>
@@ -32,7 +32,7 @@
                                 <option>Revenue Court</option>
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-md-6">
                             <label for="inputLocation" class="form-label">Court Location</label>
                             <input type="text" class="form-control" name="location" placeholder="enter court location">
                         </div>

@@ -40,14 +40,14 @@
                                                 <th>Name</th>
                                                 <th>Gender</th>
                                                 <th>DOB</th>
-                                                <th>Nationality</th>
-                                                <th>City</th>
+                                                {{-- <th>Nationality</th>
+                                                <th>City</th> --}}
                                                 <th>Email</th>
                                                 <th>Contact</th>
                                                 <th>Address</th>
-                                                <th>Position</th>
+                                                {{-- <th>Position</th>
                                                 <th>Year of Exp.</th>
-                                                <th>Creation Date</th>
+                                                <th>Creation Date</th> --}}
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -59,14 +59,14 @@
                                                     <td>{{ $value['name'] }}</td>
                                                     <td>{{ $value['gender'] }}</td>
                                                     <td>{{ $value['dob'] }}</td>
-                                                    <td>{{ $value['country'] }}</td>
-                                                    <td>{{ $value['city'] }}</td>
+                                                    {{-- <td>{{ $value['country'] }}</td>
+                                                    <td>{{ $value['city'] }}</td> --}}
                                                     <td>{{ $value['email'] }}</td>
                                                     <td>{{ $value['contact'] }}</td>
                                                     <td>{{ $value['address'] }}</td>
-                                                    <td>{{ $value['specialization'] }}</td>
+                                                    {{-- <td>{{ $value['specialization'] }}</td>
                                                     <td>{{ $value['yr_exp'] }}</td>
-                                                    <td>{{ $value['created_at'] }}</td>
+                                                    <td>{{ $value['created_at'] }}</td> --}}
                                                     <td>
                                                         @if($value['status'] == '0')
                                                                 <a class="btn-sm btn-warning">Pending</a>

@@ -683,8 +683,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
                     <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="about">About Us</a>
-                    <a class="btn btn-link" href="contact">Contact Us</a>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
                     <a class="btn btn-link" href="">Privacy Policy</a>
                     <a class="btn btn-link" href="">Terms & Condition</a>
                 </div>

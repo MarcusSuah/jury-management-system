@@ -21,10 +21,10 @@
                                             <tr class="fs-6 fw-normal font-monospace">
                                                 <th>ID</th>
                                                 <th>JUDGE NAME</th>
-                                                <th>JUDGE POSITION</th>
+                                                {{-- <th>JUDGE POSITION</th> --}}
                                                 <th>COURT NAME</th>
                                                 <th>COURT LOCATION</th>
-                                                <th>COURT TYPE</th>
+                                                {{-- <th>COURT TYPE</th> --}}
                                                 <th>ASSIGNED CASE</th>
                                                 <th>CASE START DATE</th>
                                                 <th>CASE END DATE</th>
@@ -37,10 +37,10 @@
                                                 <tr>
                                                     <th scope="row">{{ $value->id }}</th>
                                                     <td>{{ $value->Judge->name }}</td>
-                                                    <td>{{ $value->Judge->specialization }}</td>
+                                                    {{-- <td>{{ $value->Judge->specialization }}</td> --}}
                                                     <td>{{ $value->Court->name }}</td>
                                                     <td>{{ $value->Court->location }}</td>
-                                                    <td>{{ $value->Court->type }}</td>
+                                                    {{-- <td>{{ $value->Court->type }}</td> --}}
                                                     <td>{{ $value->Case->case_no }}</td>
                                                     <td>{{ $value->case_start_date }}</td>
                                                     <td>{{ $value->case_end_date }}</td>

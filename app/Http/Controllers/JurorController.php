@@ -17,7 +17,7 @@ class JurorController extends Controller
 {
     public function list()
     {
-        $jurors_count = DB::table('jurors')->count();
+        $jurors_count = DB::table('jurors')->distinct('user_id')->count('user_id');
         $jurors = Juror::getRecord();
         $result = [];
         if (!empty($jurors)) {
@@ -43,33 +43,33 @@ class JurorController extends Controller
                             'work_add' => $data->work_add ?? '',
                             'created_at' => $data->created_at ?? '',
                             'status' => $user->status ?? '0',
-                            'role_status' => (!empty($user) && $user->hasRole('jury')) ? 'yes' : 'no',
-                            'approved' => (!empty($user) && $user->hasRole('jury') || !empty($user->status)) ? 'yes' : 'no',
+                            'role_status' => !empty($user) && $user->hasRole('jury') ? 'yes' : 'no',
+                            'approved' => (!empty($user) && $user->hasRole('jury')) || !empty($user->status) ? 'yes' : 'no',
                         ];
                     }
                 }
             }
         }
 
-        return view("panel.jury.list", compact('result', 'jurors_count'));
+        return view('panel.jury.list', compact('result', 'jurors_count'));
     }
 
     public function add()
     {
-        return view("panel.jury.add");
+        return view('panel.jury.add');
     }
     public function insert(Request $request)
     {
         $validatedFields = Validator::make($request->all(), [
-            'email'  => ['required', 'string', 'max:30', 'unique:users'],
+            'email' => ['required', 'string', 'max:30', 'unique:users'],
             'name' => ['required', 'string', 'max:30'],
-            'password' => ['required', 'string', 'min:6']
+            'password' => ['required', 'string', 'min:6'],
         ]);
         if ($validatedFields->fails()) {
-            return redirect()->back()->withErrors($validatedFields->errors())->withInput()->with("error", "Juror registration was unsuccessful");
+            return redirect()->back()->withErrors($validatedFields->errors())->withInput()->with('error', 'Juror registration was unsuccessful');
         } else {
             // Create Juror user account
-            $user = new User;
+            $user = new User();
             $user->status = '0';
             $user->name = $request->name;
             $user->email = $request->email;
@@ -77,7 +77,7 @@ class JurorController extends Controller
             //$user->assignRole('jury');
             $user->save();
 
-            $save = new Juror;
+            $save = new Juror();
             $save->user_id = $user->id;
             $save->name = $request->name;
             $save->email = $request->email;
@@ -99,13 +99,13 @@ class JurorController extends Controller
                 Mail::to($user->email)->send(new AccountReponseMail($final_msg));
             }
 
-            return redirect()->back()->with("success", "Thank you for applying for a Jury account. We'll review your application and notify you.");
+            return redirect()->back()->with('success', "Thank you for applying for a Jury account. We'll review your application and notify you.");
         }
     }
     public function edit($id)
     {
         $data = Juror::getSingle($id);
-        return view("panel.jury.edit", compact('data'));
+        return view('panel.jury.edit', compact('data'));
     }
 
     public function update($id, Request $request)
@@ -125,26 +125,26 @@ class JurorController extends Controller
         $save->city = $request->city;
         $save->district = $request->district;
         $save->save();
-        return redirect("panel/jury")->with("success", "Juror updated successfully");
+        return redirect('panel/jury')->with('success', 'Juror updated successfully');
     }
     public function delete($id)
     {
         $save = Juror::getSingle($id);
         $save->delete();
-        return redirect("panel/jury")->with("success", "Juror deleted successfully ");
+        return redirect('panel/jury')->with('success', 'Juror deleted successfully ');
     }
 
     /*
-    * Method to display all jury register form
-    */
+     * Method to display all jury register form
+     */
     public function registerJuror()
     {
-        return view("panel.jury.register-jury");
+        return view('panel.jury.register-jury');
     }
 
     /*
-    * Method to approve jury
-    */
+     * Method to approve jury
+     */
     public function approveJury($id)
     {
         if (Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin')) {
@@ -159,7 +159,7 @@ class JurorController extends Controller
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 
-                return redirect("panel/jury")->with("success", "Jury account successfully approved");
+                return redirect('panel/jury')->with('success', 'Jury account successfully approved');
             } else {
                 abort(404, 'Jury Not Found.');
             }
@@ -169,8 +169,8 @@ class JurorController extends Controller
     }
 
     /*
-    * Method to deny judge
-    */
+     * Method to deny judge
+     */
     public function denyJury($id)
     {
         if (Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin')) {
@@ -184,7 +184,7 @@ class JurorController extends Controller
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 
-                return redirect("panel/jury")->with("success", "Jury account successfully denied");
+                return redirect('panel/jury')->with('success', 'Jury account successfully denied');
             } else {
                 abort(404, 'Jury Not Found.');
             }
@@ -194,8 +194,8 @@ class JurorController extends Controller
     }
 
     /*
-    * Method to approve jury
-    */
+     * Method to approve jury
+     */
     public function activateJury($id)
     {
         if (Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin')) {
@@ -210,7 +210,7 @@ class JurorController extends Controller
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 
-                return redirect("panel/jury")->with("success", "Jury account successfully approved");
+                return redirect('panel/jury')->with('success', 'Jury account successfully approved');
             } else {
                 abort(404, 'Jury Not Found.');
             }
@@ -220,8 +220,8 @@ class JurorController extends Controller
     }
 
     /*
-    * Method to deny judge
-    */
+     * Method to deny judge
+     */
     public function disableJury($id)
     {
         if (Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin')) {
@@ -236,7 +236,7 @@ class JurorController extends Controller
                     Mail::to($user->email)->send(new AccountReponseMail($final_msg));
                 }
 
-                return redirect("panel/jury")->with("success", "Jury account successfully disabled");
+                return redirect('panel/jury')->with('success', 'Jury account successfully disabled');
             } else {
                 abort(404, 'Jury Not Found.');
             }

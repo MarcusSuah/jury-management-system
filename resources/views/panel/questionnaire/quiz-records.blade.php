@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">View Quiz Records</h4>
-                            <div class="table-responsive col-sm">
+                            <div class="table-responsive ">
                                 <table id="example" class="display nowrap" style="width:100%">
                                     <thead>
                                         <tr>
@@ -20,7 +20,7 @@
                                             <!-- <th scope="col">End Date & time</th> -->
                                         </tr>
                                     </thead>
-                                    <tbody class="col-sm ">
+                                    <tbody class="col-sm-12 align-items-start ">
                                         @foreach ($record as $value)
                                             <tr>
                                                 <td>{{ $value['exam_score'] }}</td>
@@ -38,8 +38,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 @endsection

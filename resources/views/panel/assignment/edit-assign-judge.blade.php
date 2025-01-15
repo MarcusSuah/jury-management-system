@@ -3,13 +3,13 @@
 @section('content')
     <div class="container py-5 z-3">
         <div class="row">
-            <div class="card mx-auto p-2 z-3 col-6">
+            <div class="card mx-auto p-2 z-3 col-8">
                 <div class="card-body ">
                     <h1 class="card-title text-center py-lg-4 text-blue">Edit Judge Assignment</h1>
                     @include('_message')
                     <form class="row g-3" action="" method="post">
                         {{ csrf_field() }}
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Judge</label>
                             <select id="inputState" class="form-select" name="judge" required>
                                 @if (!is_null($assignedJudge))
@@ -31,7 +31,7 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Court</label>
                             <select id="inputState" class="form-select" name="court" required>
                                 @if (!is_null($assignedCourt))
@@ -60,7 +60,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Cases</label>
                             <select id="inputState" class="form-select" name="case">
                                 @if (!is_null($assignedCase))
@@ -89,7 +89,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="start_date" class="form-label">Start Date</label>
                             <input type="date" class="form-control" name="start_date" value="{{ $data->case_start_date ?? '' }}">
                             @if ($errors->has('case_start_date'))

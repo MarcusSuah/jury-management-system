@@ -34,6 +34,7 @@
                                                 <td>{{ $value['status'] }}</td>
                                                 <td>{{ $value['comment'] }}</td>
                                                 <td>{{ $value['score'] }}</td>
+
                                                 <td>{{ $value['created_at'] }}</td>
                                             </tr>
                                         @endforeach

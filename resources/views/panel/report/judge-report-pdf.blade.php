@@ -40,7 +40,8 @@
 <body>
 	<div style="width:100%; height:auto;background:#fff;margin-bottom: 20px;text-align: center;">
 
-				<h3 style="text-align:center;position:relative;margin-top:-5px;font-family:sans-serif;margin: 0;">Jury Management System</h3>
+				<h3 style="text-align:center;position:relative;margin-top:-5px;font-family:sans-serif;margin: 0;">AI-Powered Jury Selection Management
+          System</h3>
 	</div>
   <p style="text-align: center;text-decoration:underline;">Judge Report</p>
     <p>

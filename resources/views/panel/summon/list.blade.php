@@ -22,7 +22,7 @@
                                             <th>ID</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Category</th>
+                                            <th>Role</th>
                                             <th>Address</th>
                                             <th>Summon Date</th>
                                             <th>Action</th>

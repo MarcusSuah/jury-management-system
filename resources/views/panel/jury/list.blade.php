@@ -31,7 +31,7 @@
                                         <p class="text-truncate font-size-14 mb-2">Jury</p>
                                         <h4>{{ $jurors_count }}</h4>
                                         <p class="text-muted mb-0"><span
-                                                class="text-primary fw-bold font-size-18 me-2">Total Jurors
+                                                class="text-primary fw-bold font-size-18 me-2">Jurors
                                             </span></p>
                                     </div>
                                     <div class="avatar-lg">
@@ -50,7 +50,7 @@
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
                                         <p class="text-truncate font-size-14 mb-2">Category</p>
-                                        <h4 class="mb-2">7</h4>
+                                        <h4 class="mb-2"></h4>
                                         <p class="text-muted mb-0"><span
                                                 class="text-warning fw-bold font-size-18 me-2">Judges
                                                 Category</span></p>
@@ -124,18 +124,10 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>D.O.B</th>
                                                     <th>Gender</th>
                                                     <th>Contact</th>
                                                     <th>Address</th>
-                                                    <th>Occupation</th>
-                                                    <th>Work Address</th>
-                                                    <th>Race</th>
-                                                    <th>Nationality</th>
-                                                    <th>Country</th>
-                                                    <th>City</th>
                                                     <th>District</th>
-                                                    {{-- <th>Created At</th> --}}
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -146,18 +138,11 @@
                                                         <th scope="row">{{ $value['juror_id'] }}</th>
                                                         <td>{{ $value['name'] }}</td>
                                                         <td>{{ $value['email'] }}</td>
-                                                        <td>{{ $value['dob'] }}</td>
                                                         <td>{{ $value['gender'] }}</td>
                                                         <td>{{ $value['contact'] }}</td>
                                                         <td>{{ $value['address'] }}</td>
-                                                        <td>{{ $value['occupation'] }}</td>
-                                                        <td>{{ $value['work_add'] }}</td>
-                                                        <td>{{ $value['race'] }}</td>
-                                                        <td>{{ $value['nationality'] }}</td>
-                                                        <td>{{ $value['country'] }}</td>
-                                                        <td>{{ $value['city'] }}</td>
                                                         <td>{{ $value['district'] }}</td>
-                                                        {{-- <td>{{ $value['created_at'] }}</td> --}}
+
                                                         <td>
                                                             @if ($value['status'] == '0')
                                                                 <a class="btn-sm btn-warning">Pending</a>

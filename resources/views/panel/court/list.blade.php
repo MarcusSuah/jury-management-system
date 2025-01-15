@@ -35,8 +35,8 @@
                                             <th>Court Name</th>
                                             <th>Court Type</th>
                                             <th>Court Location</th>
-                                            <th>Court Category</th>
-                                            <th>Date Created</th>
+                                            {{-- <th>Court Category</th> --}}
+                                            {{-- <th>Date Created</th> --}}
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -47,8 +47,8 @@
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->type }}</td>
                                                 <td>{{ $value->location }}</td>
-                                                <td>{{ $value->category }}</td>
-                                                <td>{{ $value->created_at }}</td>
+                                                {{-- <td>{{ $value->category }}</td> --}}
+                                                {{-- <td>{{ $value->created_at }}</td> --}}
                                                 <td>
                                                     <a href="{{ url('panel/court/edit/' . $value->id) }}"
                                                         class="btn btn-success btn-sm"><i

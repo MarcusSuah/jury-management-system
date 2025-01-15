@@ -3,14 +3,14 @@
 @section('content')
     <div class="container py-5 z-3">
         <div class="row">
-            <div class="card mx-auto p-2 z-3" style="width: 600px;">
+            <div class="card mx-auto p-2 z-3 col-8">
                 <div class="card-body py-5">
                     <h1 class="card-title text-center py-lg-4 text-dark fs-3">Assign Judge Form</h1>
                     @include('_message')
                     <form class="row g-3" action="" method="post">
                         {{ csrf_field() }}
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputName" class="form-label">Judge Name</label>
                             <select id="inputState" class="form-select" name="judge" required>
                                 @if (old('judge'))
@@ -31,7 +31,7 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputCourt" class="form-label">Court Name</label>
                             <select id="inputState" class="form-select" name="court" required>
                                 @if (old('court'))
@@ -60,7 +60,7 @@
                             @endif
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Cases</label>
                             <select id="inputState" class="form-select" name="case">
                                 @if (old('case'))
@@ -88,7 +88,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="start_date" class="form-label">Start Date</label>
                             <input type="date" class="form-control no-past-day" name="start_date"
                                 value="{{ old('start_date') }}" required>

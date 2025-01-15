@@ -409,10 +409,10 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
-                                            <p class="text-truncate font-size-14 mb-2">Summon</p>
+                                            <p class="text-truncate font-size-14 mb-2">Total</p>
                                             <h4 class="mb-2">{{ $summons }}</h4>
                                             <p class="text-muted mb-0"><span
-                                                    class="text-warning fw-bold font-size-18 me-2">Total Summon</span>
+                                                    class="text-warning fw-bold font-size-18 me-2"> Summon</span>
                                             </p>
                                         </div>
                                         <div class="avatar-lg">

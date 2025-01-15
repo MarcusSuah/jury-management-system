@@ -9,11 +9,11 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
-                                <a href="{{ url('panel/jury/add') }}">
+                                <a href="{{ url('panel/assignjury/add') }}">
                                     <button class="btn btn-primary float-lg-end">Assign
                                         Jury</button>
                                 </a>
-                                <h4 class="card-title mb-4">Assignment List</h4>
+                                <h4 class="card-title mb-4">Jury Assignment List</h4>
                                 <div class="table-responsive col-sm">
                                     @include('_message')
                                     <table id="example" class="display nowrap" style="width:100%">

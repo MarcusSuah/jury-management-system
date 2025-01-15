@@ -3,13 +3,13 @@
 @section('content')
     <div class="container py-5 z-3">
         <div class="row">
-            <div class="card mx-auto p-2 z-3 col-6">
+            <div class="card mx-auto p-2 z-3 col-8">
                 <div class="card-body ">
                     <h1 class="card-title text-center py-lg-4 text-blue">Jury Assignment Form </h1>
                     @include('_message')
                     <form class="row g-3" action="" method="post">
                         {{ csrf_field() }}
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Jury</label>
                             <select id="inputState" class="form-select" name="jury" required>
                                 @if (old('jury'))
@@ -30,7 +30,7 @@
                                 @endif
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Court</label>
                             <select id="inputState" class="form-select" name="court" required>
                                 @if (old('court'))
@@ -58,7 +58,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="inputState" class="form-label">Cases</label>
                             <select id="inputState" class="form-select" name="case">
                                 @if (old('case'))
@@ -86,7 +86,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="start_date" class="form-label">Start Date</label>
                             <input type="date" class="form-control no-past-day" name="start_date"
                                 value="{{ old('start_date') }}" required>
@@ -110,7 +110,7 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <input type="checkbox" id="act_status" class="pt-2" name="status">
                             <label for="act_status" class="form-label">Active</label>
                         </div>
